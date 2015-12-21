@@ -1,0 +1,10 @@
+*.elc
+*session.*
+backups
+auto-save-list
+sessions
+tmps
+logs
+elpa
+site-lisp
+*.gpg
