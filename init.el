@@ -40,79 +40,8 @@
 ;; My modeline config:
 (require 'my-modeline-config)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; UTILS
-;;;;;;;;;;;;;;;;;;;;
-
+;; Some nifty utils:
 (require 'misc-utils)
-
-(defun array-index-of (element array)
-  (cl-labels ((iterate (index)
-                       (when (< index (length array))
-                         (if (equal element (aref array index))
-                             index
-                           (iterate (+ 1 index))))))
-    (iterate 0)))
-
-(defun tr-text (from to text)
-  (map 'string
-       (lambda (letter)
-         (let ((index (array-index-of letter from)))
-           (if index
-               (aref to index)
-             letter)))
-       text))
-
-(defun prettify-text (text)
-  "Prettifies text using unicode math symbols."
-  (tr-text "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-           "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅"
-           text))
-
-(defun replace-last-sexp ()
-  "Evaluates and replaces the previous sexp with its value. Similar to `C-u C-x C-e'."
-  (interactive)
-  (let ((value (eval (preceding-sexp))))
-    (kill-sexp -1)
-    (insert (format "%s" value))))
-
-(defun limit (str len &optional elipsis)
-  (if (> (length str) len)
-      (let ((part (substring str 0 (min (length str) (max (- len (length elipsis)) 0)))))
-        (concat part elipsis))
-    str))
-
-;; Don't use a pop-up dialog box asking for the passphrase.
-(when (file-executable-p "/usr/bin/gpg1")
-  (setq epg-gpg-program "/usr/bin/gpg1"))
-
-(defadvice epg--start (around advice-epg-disable-agent activate)
-  "Make epg--start not able to find a gpg-agent"
-  (let ((agent (getenv "GPG_AGENT_INFO")))
-    (setenv "GPG_AGENT_INFO" nil)
-    ad-do-it
-    (setenv "GPG_AGENT_INFO" agent)))
-
-(defun ddgo (keywords)
-  "Search DuckDuckGo for the selection region of text.  If no
-region is selected then search for the word at point, prompting
-the user to make sure his query is correct."
-  (interactive
-   (list
-    (if (use-region-p)
-        (buffer-substring (region-beginning) (region-end))
-      (read-string "Search DuckDuckGo for: " (propertize (format "%s" (thing-at-point 'word))
-                                                         'read-only nil)))))
-  (browse-url (concat "http://duckduckgo.com/?q="
-                      (replace-regexp-in-string
-                       "[[:space:]]+"
-                       "+"
-                       keywords))))
-
-(defun dashboard ()
-  (interactive)
-  (setq w3m-default-display-inline-images t)
-  (w3m-browse-url "localhost/PiWL/index.html"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INIT

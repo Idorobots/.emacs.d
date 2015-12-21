@@ -148,6 +148,14 @@
 ;; (require 'pretty-mode)
 ;; (global-pretty-mode t)
 
+;; Utility for evaluating Emacs Lisp:
+(defun replace-last-sexp ()
+  "Evaluates and replaces the previous sexp with its value. Similar to `C-u C-x C-e'."
+  (interactive)
+  (let ((value (eval (preceding-sexp))))
+    (kill-sexp -1)
+    (insert (format "%s" value))))
+
 ;; Useful programming shortcuts:
 (global-set-key (kbd "C-S-c") 'comment-region)
 (global-set-key (kbd "C-S-u") 'uncomment-region)
