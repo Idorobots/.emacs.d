@@ -31,7 +31,6 @@
 
 ;; Add some nifty features:
 (require 'tramp)
-(require 'dired-sync)
 
 ;; Sensible C-a
 (defun smarter-move-beginning-of-line (arg)
