@@ -195,9 +195,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; My programming conig:
 (require 'my-programming-config)
 
-;; My RSS reader config.
-;;(require 'my-rss-reader)
-
 ;; Session saving and restoring:
 (require 'desktop)
 (require 'desktop-menu)
@@ -534,14 +531,6 @@ point reaches the beginning or end of the buffer, stop there."
                                           'help-echo (concat (format "You are %s with %s total XP.\n\n" level total)
                                                              (gamify-get-pretty-stats gamify-skip-levels))
                                           'mouse-face 'mode-line-highlight)))
-
-                    ;; News Ticker number of unread RSS feeds.
-                    '(:eval (when (newsticker-running-p)
-                              (let ((unread (or (newsticker--stat-num-items-total 'new) 0)))
-                                (when (> unread 0)
-                                  (propertize (format " %d" unread)
-                                              'face 'my-unimportant-face
-                                              'mouse-face 'mode-line-highlight)))))
 
                     ;; ERC track with minimal distraction.
                     '(:eval (progn (setq icon-title-format
