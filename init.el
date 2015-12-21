@@ -189,9 +189,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; My ERC config:
 (require 'my-erc-config)
 
-;; My Nethack config:
-;;(require 'my-nethack-config)
-
 ;; My programming conig:
 (require 'my-programming-config)
 
