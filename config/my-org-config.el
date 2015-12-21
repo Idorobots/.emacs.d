@@ -12,6 +12,13 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (add-to-list 'auto-mode-alist '("ARCHIVE$" . org-mode))
 
+;; File opening:
+(setq org-file-apps
+      '((auto-mode . emacs)
+        ("\\.mm\\'" . default)
+        ("\\.x?html?\\'" . default)
+        ("\\.pdf\\'" . "evince %s")))
+
 ;; Editing settings:
 (setq org-completion-use-ido t)
 
@@ -42,8 +49,8 @@
 (defmacro deftoggler (name state)
   `(defun ,name (arg)
      (when (and (equal (plist-get arg :type) 'todo-state-change)
-              (or (equal (plist-get arg :to) ,state)
-                 (equal (plist-get arg :from) ,state)))
+                (or (equal (plist-get arg :to) ,state)
+                    (equal (plist-get arg :from) ,state)))
        (goto-char (plist-get arg :position))
        (save-excursion
          (save-restriction
@@ -313,6 +320,34 @@
         "bibtex %b"
         "xelatex -shell-escape -interaction nonstopmode %f"))
 
+(setq org-latex-default-packages-alist
+      '(("T1" "fontenc" t)
+        ("" "fontspec")
+        ("" "xunicode")
+        ("" "xltxtra")
+        ("" "fixltx2e" nil)
+        ("" "graphicx" t)
+        ("" "longtable" nil)
+        ("" "float" nil)
+        ("" "wrapfig" nil)
+        ("" "rotating" nil)
+        ("normalem" "ulem" t)
+        ("" "amsmath" t)
+        ("" "textcomp" t)
+        ("" "marvosym" t)
+        ("" "wasysym" t)
+        ("" "amssymb" t)
+        ("" "hyperref" nil)
+        "\\tolerance=1000"))
+
+(setq org-format-latex '(:foreground default
+                         :background default
+                         :scale 1.5
+                         :html-foreground "Black"
+                         :html-background "Transparent"
+                         :html-scale 1.0
+                         :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+
 (setq org-latex-pdf-process org-latex-to-pdf-process)
 
 ;; Use a sane way to cite stuff.
@@ -352,9 +387,9 @@
          (scale (or (plist-get options (if buffer :scale :html-scale)) 1.0))
          (dpi (number-to-string (* scale (floor (* 0.9 (if buffer fnh 140.))))))
          (fg (or (plist-get options (if buffer :foreground :html-foreground))
-                "Black"))
+                 "Black"))
          (bg (or (plist-get options (if buffer :background :html-background))
-                "Transparent")))
+                 "Transparent")))
     ;;(if (eq fg 'default) (setq fg (org-dvipng-color :foreground)))
     ;;(if (eq bg 'default) (setq bg (org-dvipng-color :background)))
     (with-temp-file texfile
