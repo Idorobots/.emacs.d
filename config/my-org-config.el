@@ -376,36 +376,6 @@
 (add-hook 'org-blocker-hook 'org-pomodoro-run-on-active)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; FINISHED TASK COUNTER
-;;;;;;;;;;;;;;;;;;;;
-
-(defun file-string (file)
-  "Read the contents of a file and return as a string."
-  (with-temp-buffer
-    (insert-file-contents file)
-    (buffer-string)))
-
-(defvar count-org-mode-tasks-file (expand-file-name "~/gamify/org_tasks"))
-(defvar count-org-mode-tasks-counter 0)
-
-(defun save-counter-in-file (counter file)
-  (with-temp-buffer
-    (insert (format "%d" counter))
-    (write-file file)))
-
-(setq count-org-mode-tasks-counter (string-to-number (file-string count-org-mode-tasks-file)))
-
-(defun count-org-mode-tasks-run-on-done (arg)
-  (when (and (equal (plist-get arg :type) 'todo-state-change)
-           (string= (plist-get arg :to) "DONE"))
-    (setq count-org-mode-tasks-counter (+ 1 count-org-mode-tasks-counter))
-    (save-counter-in-file count-org-mode-tasks-counter
-                          count-org-mode-tasks-file))
-  t)
-
-(add-hook 'org-trigger-hook 'count-org-mode-tasks-run-on-done)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LATEX EXPORT
 ;;;;;;;;;;;;;;;;;;;;
 
