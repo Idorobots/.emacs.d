@@ -1,0 +1,3 @@
+* My Emacs config
+
+Note that this config existed before =package-install= was a thing, hence all the various oddities around the code.
