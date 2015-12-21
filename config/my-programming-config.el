@@ -12,11 +12,7 @@
 (autoload 'ack "full-ack" "Ack source search." t)
 (autoload 'ack-find-same-file "full-ack" "Ack source search." t)
 (autoload 'ack-find-file "full-ack" "Ack source search." t)
-(autoload 'octave-mode "octave" "Major mode for editing Octave code." t)
 (autoload 'prolog-mode "prolog" "Major mode for editing Prolog code." t)
-
-;; Octave mode stuff:
-;(define-key octave-mode-map (kbd "C-M-x") 'octave-send-region) ;; FIXME
 
 ;; Common Lisp interaction:
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -37,18 +33,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TOOLS
 ;;;;;;;;;;;;;;;;;;;;
-
-;; (require 'yasnippet)
-;; (require 'dropdown-list)
-;; (setq yas-snippet-dirs (concat my-site-dir "yasnippet/snippets"))
-;; (setq yas-prompt-functions '(yas-dropdown-prompt
-;;                              yas-ido-prompt
-;;                              yas-completing-prompt))
-
-;; (define-key yas-minor-mode-map [(tab)]       nil)
-;; (define-key yas-minor-mode-map (kbd "TAB")   nil)
-;; (define-key yas-minor-mode-map (kbd "C-M-/") 'yas-expand)
-;; (yas-reload-all nil)
 
 ;; Whitespace highlighting mode:
 (require 'whitespace)
@@ -75,7 +59,6 @@
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
   (hs-minor-mode t)
-  ;;(yas-minor-mode t)
   (unless (null (buffer-file-name))
     (flymake-mode t))
   (fic-mode t)
@@ -93,11 +76,9 @@
 (add-hook 'scala-mode-hook 'common-programming-settings)
 (add-hook 'sql-mode-hook 'common-programming-settings)
 (add-hook 'erlang-mode-hook 'common-programming-settings)
-(add-hook 'octave-mode 'common-programming-settings)
 (add-hook 'prolog-mode 'common-programming-settings)
 (add-hook 'clojure-mode-hook 'common-programming-settings)
 (add-hook 'python-mode-hook 'common-programming-settings)
-(add-hook 'octave-mode-hook 'common-programming-settings)
 
 (require 'google-c-style)
 
@@ -110,9 +91,7 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 ;; Autoload patterns:
-(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
 ;; Compilation setting:
@@ -130,23 +109,6 @@
 
 (setq flymake-gui-warnings-enabled nil)
 (setq flymake-start-syntax-check-on-newline nil)
-
-;; Sublime-text-esque multiple cursors:
-(add-to-list 'load-path (concat my-site-dir "multiple-cursors"))
-(require 'multiple-cursors)
-(setq mc/list-file (concat my-tmp-dir "mc.lst"))
-
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;; ASM mode <3:
-(require 'asm-mode)
-(add-to-list 'auto-mode-alist '("\\.asm\\'" . asm-mode))
-
-;; Pretty code mode:
-;; (require 'pretty-mode)
-;; (global-pretty-mode t)
 
 ;; Utility for evaluating Emacs Lisp:
 (defun replace-last-sexp ()
