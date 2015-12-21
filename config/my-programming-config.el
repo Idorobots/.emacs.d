@@ -112,7 +112,16 @@
                flymake-simple-cleanup
                flymake-get-real-file-name))
 
-(require 'flymake-erlang)
+(defun flymake-erlang-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name temp-file
+                                         (file-name-directory buffer-file-name))))
+    (list (concat my-stuff-dir "/flymake-erlang-script")
+          (list local-file))))
+
+(add-to-list 'flymake-allowed-file-name-masks
+             '("\\.erl\\'" flymake-erlang-init))
 
 (setq flymake-gui-warnings-enabled nil)
 (setq flymake-start-syntax-check-on-newline nil)
