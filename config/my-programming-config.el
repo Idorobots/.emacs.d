@@ -96,7 +96,22 @@
 
 ;; Flymake settings:
 (require 'flymake)
-(require 'flymake-d)
+
+(defun flymake-D-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (or (flymake-simple-make-init)
+        (list "dmd" (list "-c" local-file)))))
+
+(add-to-list 'flymake-allowed-file-name-masks
+             '(".+\\.d$"
+               flymake-D-init
+               flymake-simple-cleanup
+               flymake-get-real-file-name))
+
 (require 'flymake-erlang)
 
 (setq flymake-gui-warnings-enabled nil)
