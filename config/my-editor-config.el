@@ -144,19 +144,9 @@ point reaches the beginning or end of the buffer, stop there."
 (setq browse-url-generic-program "firefox")
 (setq browse-url-browser-function 'browse-url-generic)
 
-
 ;; Session saving and restoring:
 (require 'desktop)
-(require 'desktop-menu)
-
-(setq desktop-menu-autosave 600)
-(setq desktop-menu-directory my-sessions-dir)
-(setq desktop-menu-base-filename "session")
-(setq desktop-menu-list-file "list")
-
 (add-to-list 'desktop-modes-not-to-save 'erc)
-
-(global-set-key (kbd "C-c s") 'desktop-menu)
 
 ;; Appointment tracking:
 (require 'appt)
