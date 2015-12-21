@@ -152,7 +152,7 @@
   (setq appt-time-msg-list nil))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; SPACED REPETITION & HABITS
+;; SPACED REPETITION
 ;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'org-capture-templates
@@ -204,77 +204,6 @@
 
 ;; NOTE Has to be in org-blocker-hook in order to replace scheduled-time correctly.
 (add-hook 'org-blocker-hook 'spaced-repetition-change-interval)
-
-(defvar habits-property "my_habit")
-(defvar habits-counter "my_habit_counter")
-
-(defun habits-make-persistent (arg)
-  (when (equal (plist-get arg :type) 'todo-state-change)
-    (let* ((curr-time (current-time))
-           (pos (plist-get arg :position))
-           (habit (assoc habits-property
-                         (org-entry-properties pos))))
-      (when habit
-        (goto-char pos)
-        (save-excursion
-          (save-restriction
-            (save-match-data
-              (org-narrow-to-subtree)
-              (when (re-search-forward org-scheduled-time-regexp nil t)
-                (replace-match (format "SCHEDULED: <%s ++1d>"
-                                       (format-time-string spaced-repetition-time-format curr-time))
-                               nil nil)))))))))
-
-(add-hook 'org-trigger-hook 'habits-make-persistent)
-
-;; Merge habits with Gamify.
-;; NOTE The original gamify-org-add-exp has to reside in org-blocker-hook in order for this to work.
-(defadvice gamify-org-add-exp (around habits-enforce first (arg) activate)
-  (if (and (equal (plist-get arg :type) 'todo-state-change)
-           (equal (plist-get arg :to) "DONE"))
-      (let* ((pos (plist-get arg :position))
-             (habit (assoc habits-property
-                           (org-entry-properties pos)))
-             (type (string-to-number (or (cdr habit) "0")))
-             ;; Assumes new last-repeat isn't set at this point.
-             (last-repeat (or (cdr (assoc "LAST_REPEAT"
-                                          (org-entry-properties pos)))
-                              "0001-01-01 00:01"))
-             (curr-time (current-time))
-             (days (/ (float-time
-                       (time-subtract curr-time
-                                      (apply #'encode-time
-                                             (org-parse-time-string last-repeat))))
-                      86400)))
-        (if habit
-            (let ((last-factor gamify-exp-factor)
-                  (rep (string-to-number (cdr (assoc habits-counter
-                                                     (org-entry-properties pos)))))
-                  (top-skill (car (reduce (lambda (a b)
-                                            (if (> (cdr a) (cdr b)) a b))
-                                          (map 'list
-                                               (lambda (stat)
-                                                 (cons stat (gamify-get-total-exp stat)))
-                                               (map 'list
-                                                    'car
-                                                    gamify-stats-alist))))))
-              (setq gamify-exp-factor (if (or (equal type 0)
-                                              (< days (/ 1.0 type)))
-                                          -1.0
-                                        last-factor))
-              (setq gamify-stats-instead (list top-skill))
-              ;; Wrapped call to the original gamify-org-add-exp
-              ad-do-it
-              (setq gamify-stats-instead nil)
-              (setq gamify-exp-factor last-factor)
-
-              ;; Increase the penalty.
-              (org-set-property habits-counter
-                                (format "%d" (+ 1 rep)))
-              (org-set-property gamify-exp-property
-                                (format "%d" (fibonacci (+ rep 1)))))
-          ad-do-it))
-    ad-do-it))
 
 ;; Toggle repetition tasks
 (defvar spaced-repetition-display-p t)
