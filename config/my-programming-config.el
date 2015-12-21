@@ -15,7 +15,6 @@
 
 ;; Common Lisp interaction:
 (setq inferior-lisp-program "/usr/bin/sbcl")
-(load (concat my-site-dir "quicklisp/slime-helper.el"))
 
 (require 'geiser)
 (setq geiser-active-implementations '(racket))
