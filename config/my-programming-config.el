@@ -7,7 +7,6 @@
 
 ;; Additional programming modes:
 (autoload 'd-mode "d-mode" "Major mode for editing D code." t)
-(autoload 'scala-mode "scala-mode" "Major mode for editing Scala code." t)
 (autoload 'ack-same "full-ack" "Ack source search." t)
 (autoload 'ack "full-ack" "Ack source search." t)
 (autoload 'ack-find-same-file "full-ack" "Ack source search." t)
@@ -46,10 +45,6 @@
 ;; Automatic parentheses pairing:
 (require 'autopair)
 
-;; StumpWM support:
-(require 'stumpwm-mode)
-(setq stumpwm-shell-program "stumpish")
-
 ;; Git support:
 (require 'git)
 (require 'git-blame)
@@ -73,7 +68,6 @@
 (add-hook 'sml-mode-hook 'common-programming-settings)
 (add-hook 'latex-mode-hook 'common-programming-settings)
 (add-hook 'ruby-mode-hook 'common-programming-settings)
-(add-hook 'scala-mode-hook 'common-programming-settings)
 (add-hook 'sql-mode-hook 'common-programming-settings)
 (add-hook 'erlang-mode-hook 'common-programming-settings)
 (add-hook 'prolog-mode 'common-programming-settings)
@@ -104,7 +98,6 @@
 ;; Flymake settings:
 (require 'flymake)
 (require 'flymake-d)
-(require 'flymake-ruby)
 (require 'flymake-erlang)
 
 (setq flymake-gui-warnings-enabled nil)
