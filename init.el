@@ -2,6 +2,38 @@
 ;; GENERAL SETTINGS
 ;;;;;;;;;;;;;;;;;;;;
 
+;; ELPA stuff:
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+
+(setq use-package-always-ensure t)
+
+;; Some required packages:
+(use-package autopair)
+(use-package color-theme)
+(use-package git)
+(use-package git-blame)
+(use-package fic-mode)
+(use-package google-c-style)
+(use-package full-ack)
+(use-package pomodoro)
+(use-package d-mode)
+(use-package sml-mode)
+(use-package clojure-mode)
+(use-package cider)
+(use-package erlang)
+(use-package slime)
+
 ;; Extended load-path:
 (add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/org-mode/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
