@@ -21,10 +21,6 @@
 ;; Customized custom file:
 (setq custom-file (concat my-config-dir "custom.el"))
 
-;; Common Lisp interaction:
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(load (concat my-site-dir "quicklisp/slime-helper.el"))
-
 ;; My Editor config:
 (require 'my-editor-config)
 
@@ -38,17 +34,8 @@
 ;; My ERC config:
 (require 'my-erc-config)
 
-;; My programming conig:
+;; My programming config:
 (require 'my-programming-config)
-
-;; Useful programming shortcuts:
-(global-set-key (kbd "C-S-c") 'comment-region)
-(global-set-key (kbd "C-S-u") 'uncomment-region)
-(global-set-key (kbd "C-S-g") 'goto-line)
-(global-set-key (kbd "<tab>") 'indent-relative)
-(global-set-key (kbd "C-<tab>") 'hs-toggle-hiding)
-(global-set-key (kbd "C-M-S-x") 'replace-last-sexp)         ; Replace previous sexp with its value.
-(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; My modeline config:
 (require 'my-modeline-config)

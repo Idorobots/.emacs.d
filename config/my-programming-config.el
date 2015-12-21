@@ -18,6 +18,10 @@
 ;; Octave mode stuff:
 ;(define-key octave-mode-map (kbd "C-M-x") 'octave-send-region) ;; FIXME
 
+;; Common Lisp interaction:
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(load (concat my-site-dir "quicklisp/slime-helper.el"))
+
 (require 'geiser)
 (setq geiser-active-implementations '(racket))
 (setq geiser-scheme-dir "/usr/share/geiser")
@@ -143,6 +147,15 @@
 ;; Pretty code mode:
 ;; (require 'pretty-mode)
 ;; (global-pretty-mode t)
+
+;; Useful programming shortcuts:
+(global-set-key (kbd "C-S-c") 'comment-region)
+(global-set-key (kbd "C-S-u") 'uncomment-region)
+(global-set-key (kbd "C-S-g") 'goto-line)
+(global-set-key (kbd "<tab>") 'indent-relative)
+(global-set-key (kbd "C-<tab>") 'hs-toggle-hiding)
+(global-set-key (kbd "C-M-S-x") 'replace-last-sexp)         ; Replace previous sexp with its value.
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (provide 'my-programming-config)
