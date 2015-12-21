@@ -30,14 +30,10 @@
 (use-package git)
 (use-package git-blame)
 (use-package google-c-style)
+(use-package org)
 (use-package pomodoro)
 (use-package slime)
 (use-package sml-mode)
-
-;; Extended load-path:
-(add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/org-mode/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/config/"))
 
 ;; .emacs.d config layout:
 (setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
@@ -47,6 +43,10 @@
 (setq my-site-dir (expand-file-name "~/.emacs.d/site-lisp/"))
 (setq my-tmp-dir (expand-file-name "~/.emacs.d/tmps/"))
 (setq my-logs-dir (expand-file-name "~/.emacs.d/logs/"))
+
+;; Extended load-path:
+(add-to-list 'load-path my-site-dir)
+(add-to-list 'load-path my-config-dir)
 
 ;; Customized custom file:
 (setq custom-file (concat my-config-dir "custom.el"))
