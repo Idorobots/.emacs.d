@@ -48,8 +48,9 @@
 (add-to-list 'load-path my-site-dir)
 (add-to-list 'load-path my-config-dir)
 
-;; Customized custom file:
+;; Some important files:
 (setq custom-file (concat my-config-dir "custom.el"))
+(setq secrets-file (concat my-config-dir "secrets.el.gpg"))
 
 ;; My Editor config:
 (require 'my-editor-config)

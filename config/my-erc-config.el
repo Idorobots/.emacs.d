@@ -239,7 +239,7 @@
   "Start wasting time on BitlBee..."
   (interactive)
   (bitlbee-start-if-not-running)
-  (require 'secrets "secrets.el.gpg")
+  (require 'secrets secrets-file)
   ;; Enable sane logging:
   (and erc-log-timer (cancel-timer erc-log-timer))
   (setq erc-log-timer (run-at-time erc-log-auto-save-interval
@@ -255,7 +255,7 @@
 (defun start-irc (&optional port)
   "Start to waste time on IRC with ERC."
   (interactive)
-  (require 'secrets "secrets.el.gpg")
+  (require 'secrets secrets-file)
   (require 'tls)
   ;; Enable sane logging:
   (and erc-log-timer (cancel-timer erc-log-timer))
@@ -272,7 +272,7 @@
 (defun start-slack (&optional port)
   "Start to waste time on IRC with ERC."
   (interactive)
-  (require 'secrets "secrets.el.gpg")
+  (require 'secrets secrets-file)
   (require 'tls)
   ;; Enable sane logging:
   (and erc-log-timer (cancel-timer erc-log-timer))
