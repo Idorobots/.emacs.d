@@ -31,11 +31,6 @@
 (setq memory-usage-format "%R %F %S")
 (memory-usage-start)
 
-(require 'misc-stats)
-;; NOTE Quite redundant.
-;;(setq misc-stats-format "%T %D %E %S %L")
-;;(misc-stats-start)
-
 (defvar load-average-val (load-average))
 (defvar load-average-update-interval 10)
 (defvar load-average-timer ())
@@ -59,7 +54,7 @@
 (load-stats-start) ; Start it!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; MODELINE ; TODO Don't load images in text-only sessions.
+;; MODELINE
 ;;;;;;;;;;;;;;;;;;;;
 
 ;;; Faces:

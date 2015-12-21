@@ -150,8 +150,6 @@
 (setq erc-log-insert-log-on-open nil)
 (setq erc-save-buffer-on-part nil)
 (setq erc-save-queries-on-quit nil)
-;;(setq erc-log-write-after-send t)
-;;(setq erc-log-write-after-insert t)
 (setq erc-log-write-after-send nil)
 (setq erc-log-write-after-insert nil)
 (setq erc-log-file-coding-system 'utf-8)

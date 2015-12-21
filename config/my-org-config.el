@@ -66,7 +66,6 @@
 (global-set-key (kbd "M-i") 'org-toggle-inline-images)
 
 ;; Other modes:
-
 (require 'autopair)
 (add-hook 'org-mode-hook 'autopair-mode)
 
