@@ -20,19 +20,19 @@
 
 ;; Some required packages:
 (use-package autopair)
+(use-package cider)
+(use-package clojure-mode)
 (use-package color-theme)
+(use-package d-mode)
+(use-package erlang)
+(use-package fic-mode)
+(use-package full-ack)
 (use-package git)
 (use-package git-blame)
-(use-package fic-mode)
 (use-package google-c-style)
-(use-package full-ack)
 (use-package pomodoro)
-(use-package d-mode)
-(use-package sml-mode)
-(use-package clojure-mode)
-(use-package cider)
-(use-package erlang)
 (use-package slime)
+(use-package sml-mode)
 
 ;; Extended load-path:
 (add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/org-mode/"))
