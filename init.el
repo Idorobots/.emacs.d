@@ -6,7 +6,6 @@
 (add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/org-mode/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/scala-mode"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/yasnippet"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/org2blog"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config/"))
 
