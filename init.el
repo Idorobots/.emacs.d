@@ -181,7 +181,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; My Gamify config:
 (require 'my-gamify-config)
 (gamify-start)
-(gamify-munin-save-stats)
 
 ;; My Org-Mode config:
 (require 'my-org-config)
