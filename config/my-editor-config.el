@@ -6,6 +6,7 @@
 ;; Pretty color theme:
 (require 'color-theme)
 (color-theme-initialize)
+(require 'color-theme-tango)
 (color-theme-tango)
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 
