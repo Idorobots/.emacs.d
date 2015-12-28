@@ -115,5 +115,6 @@
   )
 
 (my-gamify-dark-theme) ; Set the dark theme by default.
+(gamify-start) ; Start the thing.
 
 (provide 'my-gamify-config)

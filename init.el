@@ -56,7 +56,6 @@
 
 ;; My Gamify config:
 (require 'my-gamify-config)
-(gamify-start)
 
 ;; My Org-Mode config:
 (require 'my-org-config)
