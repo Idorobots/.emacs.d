@@ -163,15 +163,4 @@ point reaches the beginning or end of the buffer, stop there."
 (setq appt-disp-window-function (function my-appt-popup))
 (appt-activate t)                             ; NOTE Requires (display-time)
 
-;; Don't use a pop-up dialog box asking for the passphrase.
-(when (file-executable-p "/usr/bin/gpg1")
-  (setq epg-gpg-program "/usr/bin/gpg1"))
-
-(defadvice epg--start (around advice-epg-disable-agent activate)
-  "Make epg--start not able to find a gpg-agent"
-  (let ((agent (getenv "GPG_AGENT_INFO")))
-    (setenv "GPG_AGENT_INFO" nil)
-    ad-do-it
-    (setenv "GPG_AGENT_INFO" agent)))
-
 (provide 'my-editor-config)
