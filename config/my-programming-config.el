@@ -26,7 +26,7 @@
 
 ;; SML mode is needy:
 (setq exec-path (cons "/opt/bin/SML/bin" exec-path))
-;(define-key sml-mode-map (kbd "C-M-x") 'sml-send-region) ;; FIXME
+;; (define-key sml-mode-map (kbd "C-M-x") 'sml-send-region) ;; FIXME
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TOOLS
@@ -58,7 +58,7 @@
   (fic-mode t)
   (whitespace-mode t)
   (autopair-mode t))
-  ;;(electric-pair-mode t))
+;; (electric-pair-mode t))
 
 (add-hook 'c-mode-common-hook 'common-programming-settings)
 (add-hook 'emacs-lisp-mode-hook 'common-programming-settings)
@@ -77,7 +77,7 @@
 
 (defun my-c-mode-hook ()
   (google-set-c-style)
-;  (setf (cdr (assoc 'other c-default-style)) "Google")
+  ;; (setf (cdr (assoc 'other c-default-style)) "Google")
   (c-toggle-electric-state 1)
   (c-toggle-auto-newline 1))
 
@@ -91,8 +91,8 @@
 (require 'compile)
 (setq compilation-scroll-output t)            ; Scroll the compilation buffer automatically.
 (add-to-list 'compilation-error-regexp-alist  ; Additional error regex for the D language.
-    '("^\\([^ \n]+\\)(\\([0-9]+\\)): \\(?:error\\|.\\|warnin\\(g\\)\\|remar\\(k\\)\\)"
-      1 2 nil (3 . 4)))
+             '("^\\([^ \n]+\\)(\\([0-9]+\\)): \\(?:error\\|.\\|warnin\\(g\\)\\|remar\\(k\\)\\)"
+               1 2 nil (3 . 4)))
 
 ;; Flymake settings:
 (require 'flymake)
