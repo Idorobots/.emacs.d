@@ -143,5 +143,36 @@
 (global-set-key (kbd "C-M-S-x") 'replace-last-sexp)         ; Replace previous sexp with its value.
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; Speedbar stuff:
+(require 'speedbar)
+(require 'sr-speedbar)
+
+(eval-after-load "speedbar"
+  (lambda ()
+    (speedbar-add-supported-extension ".erl")
+    (speedbar-add-supported-extension ".clj")))
+
+(setq speedbar-show-unknown-files t)
+(setq speedbar-use-images nil)
+(setq sr-speedbar-auto-refresh t)
+
+;; Make sr-speedbar sane:
+(advice-add 'sr-speedbar-open :after
+            (lambda ()
+              (set-window-dedicated-p sr-speedbar-window nil)))
+
+(advice-add 'sr-speedbar-close :around
+            (lambda (ignored &rest args)
+              (when (sr-speedbar-exist-p)
+                ;;(delete-window sr-speedbar-window) ;; NOTE Might be better to do this.
+                (kill-buffer sr-speedbar-buffer-name))))
+
+(advice-add 'sr-speedbar-get-window :around
+            (lambda (ignored &rest args)
+              (setq sr-speedbar-window (or (split-window-sensibly)
+                                           (selected-window)))))
+
+(global-set-key (kbd "C-c s") 'sr-speedbar-toggle)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (provide 'my-programming-config)
