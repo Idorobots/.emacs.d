@@ -172,6 +172,18 @@
 (defvar erc-log-timer nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Speedbar integration
+;;;;;;;;;;;;;;;;;;;;
+
+(require 'erc-speedbar)
+(require 'speedbar)
+
+(define-key speedbar-mode-map "E"
+  (lambda ()
+    (interactive)
+    (speedbar-change-initial-expansion-list "ERC")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LAYOUT
 ;;;;;;;;;;;;;;;;;;;;
 
