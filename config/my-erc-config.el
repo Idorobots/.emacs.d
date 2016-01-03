@@ -6,23 +6,28 @@
 
 (require 'erc)
 
-;; Face definitions:
-(set-face-attribute 'erc-action-face nil :inherit 'outline-1 :weight 'bold)
-(set-face-attribute 'erc-bold-face nil :weight 'bold)
-(set-face-attribute 'erc-command-indicator-face nil :weight 'bold)
-(set-face-attribute 'erc-current-nick-face nil :inherit 'font-lock-warning-face :weight 'bold)
-(set-face-attribute 'erc-dangerous-host-face nil :inherit 'font-lock-warning-face)
-(set-face-attribute 'erc-direct-msg-face nil :inherit 'outline-4)
-(set-face-attribute 'erc-error-face nil :inherit 'font-lock-warning-face)
-(set-face-attribute 'erc-fool-face nil :inherit 'outline-4 :weight 'bold)
-(set-face-attribute 'erc-keyword-face nil :inherit 'outline-5 :weight 'bold)
-(set-face-attribute 'erc-my-nick-face nil :inherit 'outline-4 :slant 'italic :weight 'bold)
-(set-face-attribute 'erc-nick-default-face nil :weight 'bold)
-(set-face-attribute 'erc-nick-msg-face nil :inherit 'outline-4 :weight 'bold)
-(set-face-attribute 'erc-notice-face nil :inherit 'outline-3 :weight 'bold)
-(set-face-attribute 'erc-pal-face nil :inherit 'outline-3 :weight 'bold)
-(set-face-attribute 'erc-timestamp-face nil :foreground "PaleGreen" :weight 'bold)
-(set-face-attribute 'fg:erc-color-face0 nil :foreground "White")
+;; ERC theme:
+(require 'color-theme)
+
+(color-theme-install-faces
+ '((erc-action-face ((t (:inherit outline-1 :weight bold))))
+   (erc-bold-face ((t (:weight bold))))
+   (erc-command-indicator-face ((t (:weight bold))))
+   (erc-current-nick-face ((t (:inherit font-lock-warning-face :weight bold))))
+   (erc-dangerous-host-face ((t (:inherit font-lock-warning-face))))
+   (erc-default-face ((t nil)))
+   (erc-direct-msg-face ((t (:inherit outline-4))))
+   (erc-error-face ((t (:inherit font-lock-warning-face))))
+   (erc-fool-face ((t (:inherit outline-4 :weight bold))))
+   (erc-input-face ((t nil)))
+   (erc-keyword-face ((t (:inherit outline-5 :weight bold))))
+   (erc-my-nick-face ((t (:inherit outline-4 :slant italic :weight bold))))
+   (erc-nick-default-face ((t (:weight bold))))
+   (erc-nick-msg-face ((t (:inherit outline-4 :weight bold))))
+   (erc-notice-face ((((class color) (min-colors 88)) (:inherit outline-3 :weight bold))))
+   (erc-pal-face ((t (:inherit outline-3 :weight bold))))
+   (erc-timestamp-face ((t (:foreground "PaleGreen" :weight bold))))
+   (fg:erc-color-face0 ((t (:foreground "White"))))))
 
 ;; Basic stuff:
 (erc-keep-place-mode t)                       ; Save the point of out-of-focus buffers.
