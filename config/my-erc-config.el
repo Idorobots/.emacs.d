@@ -6,6 +6,24 @@
 
 (require 'erc)
 
+;; Face definitions:
+(set-face-attribute 'erc-action-face nil :inherit 'outline-1 :weight 'bold)
+(set-face-attribute 'erc-bold-face nil :weight 'bold)
+(set-face-attribute 'erc-command-indicator-face nil :weight 'bold)
+(set-face-attribute 'erc-current-nick-face nil :inherit 'font-lock-warning-face :weight 'bold)
+(set-face-attribute 'erc-dangerous-host-face nil :inherit 'font-lock-warning-face)
+(set-face-attribute 'erc-direct-msg-face nil :inherit 'outline-4)
+(set-face-attribute 'erc-error-face nil :inherit 'font-lock-warning-face)
+(set-face-attribute 'erc-fool-face nil :inherit 'outline-4 :weight 'bold)
+(set-face-attribute 'erc-keyword-face nil :inherit 'outline-5 :weight 'bold)
+(set-face-attribute 'erc-my-nick-face nil :inherit 'outline-4 :slant 'italic :weight 'bold)
+(set-face-attribute 'erc-nick-default-face nil :weight 'bold)
+(set-face-attribute 'erc-nick-msg-face nil :inherit 'outline-4 :weight 'bold)
+(set-face-attribute 'erc-notice-face nil :inherit 'outline-3 :weight 'bold)
+(set-face-attribute 'erc-pal-face nil :inherit 'outline-3 :weight 'bold)
+(set-face-attribute 'erc-timestamp-face nil :foreground "PaleGreen" :weight 'bold)
+(set-face-attribute 'fg:erc-color-face0 nil :foreground "White")
+
 ;; Basic stuff:
 (erc-keep-place-mode t)                       ; Save the point of out-of-focus buffers.
 (erc-button-mode nil)                         ; Too slow.
