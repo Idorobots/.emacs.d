@@ -21,8 +21,6 @@
  '(erc-pal-face ((t (:inherit outline-3 :weight bold))))
  '(erc-timestamp-face ((t (:foreground "PaleGreen" :weight bold))))
  '(fg:erc-color-face0 ((t (:foreground "White"))))
- '(flymake-errline ((((class color) (background dark)) (:background "Firebrick3"))))
- '(flymake-warnline ((((class color) (background dark)) (:background "DarkOrange3"))))
  '(org-hide ((((background dark)) (:foreground "gray10"))))
  '(org-level-2 ((t (:inherit outline-4 :weight bold))))
  '(org-level-4 ((t (:inherit outline-6))))

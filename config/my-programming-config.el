@@ -2,6 +2,7 @@
 ;; GENERAL STUFF
 ;;;;;;;;;;;;;;;;;;;;
 
+;; Indentation style:
 (setq comment-style 'indent)
 (setq standard-indent 4)
 
@@ -96,6 +97,9 @@
 
 ;; Flymake settings:
 (require 'flymake)
+
+(set-face-attribute 'flymake-errline nil :background "Firebrick3")
+(set-face-attribute 'flymake-warnline nil :background "DarkOrange3")
 
 (defun flymake-D-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
