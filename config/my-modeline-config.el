@@ -59,6 +59,11 @@
 
 ;;; Faces:
 
+(set-face-attribute 'mode-line nil
+                    :background "#555753"
+                    :foreground "#eeeeec"
+                    :weight 'light)
+
 (defmacro alias-face (name face)
   "Creates an alias `name' to face `face'."
   `(progn (defface ,name '((default :inherit ,face :slant r))
