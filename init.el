@@ -49,7 +49,6 @@
 (add-to-list 'load-path my-config-dir)
 
 ;; Some important files:
-(setq custom-file (concat my-config-dir "custom.el"))
 (setq secrets-file (concat my-config-dir "secrets.el.gpg"))
 
 ;; My Editor config:
@@ -76,9 +75,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; INIT
 ;;;;;;;;;;;;;;;;;;;;
-
-;; Override the defaults with customized values:
-(load custom-file)
 
 ;; Load Org-Agenda buffer and center on the refile list:
 (find-file "~/org/refile.org")
