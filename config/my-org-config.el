@@ -45,6 +45,14 @@
         ("SUSPENDED" . my-yellow-face)
         ("CANCELLED" . my-red-face)))
 
+;; Display faces:
+(set-face-attribute 'org-hide nil :foreground "gray10")
+(set-face-attribute 'org-level-2 nil :inherit 'outline-4 :weight 'bold)
+(set-face-attribute 'org-level-4 nil :inherit 'outline-6)
+(set-face-attribute 'org-level-5 nil :inherit 'outline-8)
+(set-face-attribute 'org-level-6 nil :inherit 'outline-4)
+(set-face-attribute 'org-level-8 nil :foreground "#76ab35")
+
 ;; Auto-suspend SUSPENDED and UNSCHEDULED tasks:
 (defmacro deftoggler (name state)
   `(defun ,name (arg)
