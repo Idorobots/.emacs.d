@@ -46,12 +46,15 @@
         ("CANCELLED" . my-red-face)))
 
 ;; Display faces:
-(set-face-attribute 'org-hide nil :foreground "gray10")
-(set-face-attribute 'org-level-2 nil :inherit 'outline-4 :weight 'bold)
-(set-face-attribute 'org-level-4 nil :inherit 'outline-6)
-(set-face-attribute 'org-level-5 nil :inherit 'outline-8)
-(set-face-attribute 'org-level-6 nil :inherit 'outline-4)
-(set-face-attribute 'org-level-8 nil :foreground "#76ab35")
+(require 'color-theme)
+
+(color-theme-install-faces
+ '((org-hide ((t (:foreground "gray10"))))
+   (org-level-2 ((t (:inherit 'outline-4 :weight 'bold))))
+   (org-level-4 ((t (:inherit 'outline-6))))
+   (org-level-5 ((t (:inherit 'outline-8))))
+   (org-level-6 ((t (:inherit 'outline-4))))
+   (org-level-8 ((t (:foreground "#76ab35"))))))
 
 ;; Auto-suspend SUSPENDED and UNSCHEDULED tasks:
 (defmacro deftoggler (name state)
