@@ -143,12 +143,8 @@
 (require 'erc-join)
 (setq erc-autojoin-channels-alist '(("freenode.net"
                                      "#d"
-                                     ;;"#udacity"
-                                     ;;"#agh"
                                      "#lisp-pl"
-                                     ;;"#noesis"
                                      "#stosowana"
-                                     "#ubnt-krk"
                                      "#blackarch"
                                      "#archlinux-arm"
                                      )
