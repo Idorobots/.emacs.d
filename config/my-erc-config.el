@@ -46,7 +46,6 @@
             (setq erc-spelling-dictionaries '(("localhost:6667" "polish")
                                               ("#stosowana" "polish")
                                               ("#lisp-pl" "polish")
-                                              ("#noesis" "polish")
                                               ("irc.freenode.net:6667" "american")))))
 
 ;; Tracking different events:
@@ -142,12 +141,11 @@
 ;; Manage autojoining:
 (require 'erc-join)
 (setq erc-autojoin-channels-alist '(("freenode.net"
+                                     "#clojure"
                                      "#d"
+                                     "#erlang"
                                      "#lisp-pl"
-                                     "#stosowana"
-                                     "#blackarch"
-                                     "#archlinux-arm"
-                                     )
+                                     "#stosowana")
                                     ("localhost" "&bitlbee")))
 
 ;; Make channels floodable by default.
