@@ -91,7 +91,8 @@
     (message (concat "Not tracking `" keyword "' anymore."))))
 
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
-                     "Lisp" "lisp" "Scheme" "scheme" "Emacs" "emacs"))
+                     "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
+                     "Lisp" "lisp" "Racket" "racket" "Scheme" "scheme"))
 
 (erc-match-mode t) ;; NOTE Has to be setup before erc-stamp for some reason.
 
