@@ -73,6 +73,7 @@
 (add-hook 'prolog-mode 'common-programming-settings)
 (add-hook 'clojure-mode-hook 'common-programming-settings)
 (add-hook 'python-mode-hook 'common-programming-settings)
+(add-hook 'markdown-mode-hook 'common-programming-settings)
 
 (require 'google-c-style)
 
