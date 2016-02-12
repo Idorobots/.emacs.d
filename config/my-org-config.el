@@ -36,13 +36,11 @@
             (visual-line-mode t)))
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "ACTIVE(a!)" "|" "DONE(d!)")
-        (sequence "UNSCHEDULED(u)" "SUSPENDED(s@/!)" "BLOCKER(b@)" "|" "CANCELLED(c@)" "DELEGATED(D@)")))
+      '((sequence "TODO(t)" "|" "DONE(d!)")
+        (sequence "SUSPENDED(s@/!)" "|" "CANCELLED(c@)" "DELEGATED(D@)")))
 
 (setq org-todo-keyword-faces
-      '(("ACTIVE" . "LightGoldenrod")
-        ("BLOCKER" . my-red-face)
-        ("SUSPENDED" . my-yellow-face)
+      '(("SUSPENDED" . my-yellow-face)
         ("CANCELLED" . my-red-face)))
 
 ;; Display faces:
@@ -56,7 +54,7 @@
    (org-level-6 ((t (:inherit 'outline-4))))
    (org-level-8 ((t (:foreground "#76ab35"))))))
 
-;; Auto-suspend SUSPENDED and UNSCHEDULED tasks:
+;; Auto-suspend SUSPENDED tasks:
 (defmacro deftoggler (name state)
   `(defun ,name (arg)
      (when (and (equal (plist-get arg :type) 'todo-state-change)
@@ -71,10 +69,8 @@
      t))
 
 (deftoggler my-toggle-suspend "SUSPENDED")
-(deftoggler my-toggle-unscheduled "UNSCHEDULED")
 
 (add-hook 'org-trigger-hook 'my-toggle-suspend)
-(add-hook 'org-trigger-hook 'my-toggle-unscheduled)
 
 ;; Links and hyperrefs:
 (setq org-return-follows-link t)
@@ -154,10 +150,7 @@
 
                                         ; Additional Agenda commands:
 (setq org-agenda-custom-commands
-      '(("U" "Tasks awaiting scheduling." todo "UNSCHEDULED")
-        ("A" "Currently active tasks." todo "ACTIVE")
-        ("S" "Suspended tasks." todo "SUSPENDED")
-        ("B" "Blocking tasks." todo "BLOCKER")))
+      '(("S" "Suspended tasks." todo "SUSPENDED")))
 
 ;; Use appt for agenda notifications:
 (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
