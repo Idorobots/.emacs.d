@@ -48,7 +48,7 @@
 
 (color-theme-install-faces
  '((org-hide ((t (:foreground "gray10"))))
-   (org-level-2 ((t (:inherit 'outline-4 :weight 'bold))))
+   (org-level-2 ((t (:inherit 'outline-4 :weight bold))))
    (org-level-4 ((t (:inherit 'outline-6))))
    (org-level-5 ((t (:inherit 'outline-8))))
    (org-level-6 ((t (:inherit 'outline-4))))
