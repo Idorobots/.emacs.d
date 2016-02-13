@@ -240,44 +240,25 @@
                                                              (nth 4 net))
                                           'mouse-face 'mode-line-highlight)))
 
-                    ;; Pomodoro and current uptime.
+                    ;; Current uptime.
                     ;; NOTE Required some hacking as it breaks transient mark mode...
-                    ;; '(:eval (let* ((help-str (concat (format-time-string "Time: %Y-%m-%d %H:%M:%S\n")
-                    ;;                                  (format-sut-string "SUT: %Y-%m-%d")
-                    ;;                                  "\n"
-                    ;;                                  (emacs-uptime "Emacs uptime: %H, %M\n")
-                    ;;                                  (format-seconds
-                    ;;                                   "System uptime: %H, %M"
-                    ;;                                   (- (float-time (current-time))
-                    ;;                                      (string-to-number
-                    ;;                                       (shell-command-to-string
-                    ;;                                        "cat /proc/stat | awk '{if(NR == 6) print $2}'"))))))
-                    ;;                (image "")
-                    ;;                (str (emacs-uptime "%h:%.2m"))
-                    ;;                (face 'my-unimportant-face))
-                    ;;           (when (pomodoro-running-p)
-                    ;;             (let* ((ps (split-string pomodoro-display-string))
-                    ;;                    (phase (car ps))
-                    ;;                    (set (cadr ps))
-                    ;;                    (time-left (string-to-number (caddr ps)))
-                    ;;                    (time-str (format "%d:%02d" (/ time-left 60) (% time-left 60))))
-                    ;;               (setq image "⌛")
-                    ;;               (setq str time-str)
-                    ;;               (setq face (if (string= phase "W")
-                    ;;                              (cond ((<= time-left pomodoro-warn-time)
-                    ;;                                     'my-red-face)
-                    ;;                                    ((<= time-left (* 2 pomodoro-warn-time))
-                    ;;                                     'my-yellow-face))
-                    ;;                            'my-green-face))
-                    ;;               (setq help-str (concat help-str
-                    ;;                                      (format "\n\nPomodoro: %s\nSet: %s\nTime left: %s"
-                    ;;                                              (pomodoro-current-state)
-                    ;;                                              set
-                    ;;                                              time-str)))))
-                    ;;           (propertize (concat " " image str)
-                    ;;                       'face face
-                    ;;                       'help-echo help-str
-                    ;;                       'mouse-face 'mode-line-highlight)))
+                    '(:eval (let* ((help-str (concat (format-time-string "Time: %Y-%m-%d %H:%M:%S\n")
+                                                     (format-sut-string "SUT: %Y-%m-%d")
+                                                     "\n"
+                                                     (emacs-uptime "Emacs uptime: %H, %M\n")
+                                                     (format-seconds
+                                                      "System uptime: %H, %M"
+                                                      (- (float-time (current-time))
+                                                         (string-to-number
+                                                          (shell-command-to-string
+                                                           "cat /proc/stat | awk '{if(NR == 6) print $2}'"))))))
+                                   (image "")
+                                   (str (emacs-uptime "%h:%.2m"))
+                                   (face 'my-unimportant-face))
+                              (propertize (concat " " image str)
+                                          'face face
+                                          'help-echo help-str
+                                          'mouse-face 'mode-line-highlight)))
 
                     ;; Gamify stats
                     '(:eval (let* ((stats (split-string gamify-mode-line-string))

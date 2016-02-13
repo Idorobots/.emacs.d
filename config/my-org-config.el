@@ -285,39 +285,6 @@
      (define-key map (kbd "x") 'gamify-org-agenda-tasks)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; POMODORO ;; FIXME
-;;;;;;;;;;;;;;;;;;;;
-
-;; (require 'pomodoro)
-;; (setq pomodoro-icon (concat my-stuff-dir "pomodoro.png"))
-;; (setq pomodoro-work-format "W %d %d")
-;; (setq pomodoro-break-format "B %d %d")
-;; (setq pomodoro-long-format "L %d %d")
-
-;; (setq pomodoro-update-interval 3)
-;; (setq pomodoro-warn-time 150)
-;; (setq pomodoro-long-break (* 15 60))              ; 15 minutes to grab a caffè.
-;; (setq pomodoro-short-break (* 3 60))              ; 3 minutes to actually drink it.
-;; (setq pomodoro-work-time (* 30 60))               ; 30 minutes of productiveness.
-
-;; (defun org-pomodoro-run-on-active (arg)
-;;   (if (equal (plist-get arg :type) 'todo-state-change)
-;;       (cond ((string= (plist-get arg :to) "ACTIVE")
-;;              (pomodoro)
-;;              (gamify-focus-on (org-get-tags-at (plist-get arg :position)))
-;;              t) ;; NOTE Wether restarted or not this should always succeed.
-;;             ((string= (plist-get arg :from) "ACTIVE")
-;;              (if (pomodoro-running-p)
-;;                  (if (yes-or-no-p "Really end this Pomodoro? ")
-;;                      (pomodoro-stop)
-;;                    t)
-;;                t))
-;;             (t t))
-;;     t))
-
-;; (add-hook 'org-blocker-hook 'org-pomodoro-run-on-active)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LATEX EXPORT
 ;;;;;;;;;;;;;;;;;;;;
 
