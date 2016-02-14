@@ -102,13 +102,11 @@
 (setq org-agenda-skip-timestamp-if-done t)
 (setq org-agenda-span 'day)
 (setq org-agenda-log-mode-items '(closed clock state))
-                                        ;(setq org-agenda-use-time-grid nil)
 (setq org-agenda-current-time-string #("------NOW------" 0 15 (org-heading t)))
 (setq org-agenda-time-grid '((daily today require-timed remove-match)
                              #("---------------" 0 15 (org-heading t))
                              (700 800 900 1000 1100 1200 1300 1400 1500
                                   1600 1700 1800 1900 2000 2100 2200 2300)))
-                                        ;(setq org-agenda-start-with-log-mode t)
 (setq org-agenda-start-on-weekday nil)            ; Start on 'today.
 (setq org-agenda-scheduled-leaders '("" "%dd. ago: "))
 (setq org-agenda-deadline-leaders '("" "In %dd.: "))
@@ -364,8 +362,6 @@
                  "Black"))
          (bg (or (plist-get options (if buffer :background :html-background))
                  "Transparent")))
-    ;;(if (eq fg 'default) (setq fg (org-dvipng-color :foreground)))
-    ;;(if (eq bg 'default) (setq bg (org-dvipng-color :background)))
     (with-temp-file texfile
       (insert (org-splice-latex-header
                org-format-latex-header
@@ -382,10 +378,8 @@
               "\\begin{document}\n"
               "\\pagecolor{export-bg}\n" ;; FIXME
               "\\begin{preview}\n"
-              ;;"\\colorbox{export-bg}{\n" ;; FIXME
               "\\special{x:backgroundcolor=export-bg}\n"
               "\\textcolor{export-fg}{" string "}\n"
-              ;;"}\n"
               "\\end{preview}\n"
               "\\end{document}\n")
       (require 'org-latex)
@@ -402,15 +396,9 @@
     (if (not (file-exists-p pdffile))
         (progn (message "Failed to create pdf file from %s" texfile) nil)
       (condition-case nil
-          (progn
-            ;; FIXME Use pdfcrop to crop these.
-            ;; (call-process "pdfcrop" nil nil nil
-            ;;               "--xetex"
-            ;;               pdffile
-            ;;               pdffile)
-            (call-process "convert" nil nil nil
-                          pdffile
-                          pngfile))
+          (call-process "convert" nil nil nil
+                        pdffile
+                        pngfile)
         (error nil))
       (if (not (file-exists-p pngfile))
           (if org-format-latex-signal-error

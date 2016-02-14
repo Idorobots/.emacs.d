@@ -27,7 +27,6 @@
 
 ;; SML mode is needy:
 (setq exec-path (cons "/opt/bin/SML/bin" exec-path))
-;; (define-key sml-mode-map (kbd "C-M-x") 'sml-send-region) ;; FIXME
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TOOLS
@@ -59,7 +58,6 @@
   (fic-mode t)
   (whitespace-mode t)
   (autopair-mode t))
-;; (electric-pair-mode t))
 
 (add-hook 'c-mode-common-hook 'common-programming-settings)
 (add-hook 'emacs-lisp-mode-hook 'common-programming-settings)
@@ -79,7 +77,6 @@
 
 (defun my-c-mode-hook ()
   (google-set-c-style)
-  ;; (setf (cdr (assoc 'other c-default-style)) "Google")
   (c-toggle-electric-state 1)
   (c-toggle-auto-newline 1))
 
@@ -169,7 +166,7 @@
 (advice-add 'sr-speedbar-close :around
             (lambda (ignored &rest args)
               (when (sr-speedbar-exist-p)
-                ;;(delete-window sr-speedbar-window) ;; NOTE Might be better to do this.
+                ;; NOTE Might be better to delete the window.
                 (kill-buffer sr-speedbar-buffer-name))))
 
 (advice-add 'sr-speedbar-get-window :around

@@ -15,9 +15,10 @@
 (require 'network-speed)                      ; NOTE Used by custom mode-line-format, do not change.
 (setq network-speed-update-interval 5)
 (setq network-speed-precision 1)
-(setq network-speed-interface-list (if (string= (shell-command-to-string "ifconfig | grep wlp2s0") "")
-                                       '("enp4s0")
-                                     '("wlp2s0")))
+(setq network-speed-interface-list
+      (if (string= (shell-command-to-string "ifconfig | grep wlp2s0") "")
+          '("enp4s0")
+        '("wlp2s0")))
 (setq network-speed-format-string "%NI#%RB#%TB#%RX#%TX#%AX")
 (network-speed-start)
 

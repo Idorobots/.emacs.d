@@ -59,7 +59,6 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
 
 ;; Text editing:
-;;(pc-selection-mode t)                         ; Reasonable text selection.
 (line-number-mode t)
 (column-number-mode t)
 
@@ -122,7 +121,6 @@ point reaches the beginning or end of the buffer, stop there."
 (setq ido-enable-flex-matching t)
 (ido-everywhere t)
 (ido-mode 'both)                             ; Use ido for files and Iswitchb for buffers.
-;;(iswitchb-mode t)                            ; Easier buffer switching.
 
 (defadvice ido-find-file (after find-file-sudo activate)
   "Find file as root if necessary."
