@@ -242,24 +242,13 @@
                                           'mouse-face 'mode-line-highlight)))
 
                     ;; Current uptime.
-                    ;; NOTE Required some hacking as it breaks transient mark mode...
-                    '(:eval (let* ((help-str (concat (format-time-string "Time: %Y-%m-%d %H:%M:%S\n")
-                                                     (format-sut-string "SUT: %Y-%m-%d")
-                                                     "\n"
-                                                     (emacs-uptime "Emacs uptime: %H, %M\n")
-                                                     (format-seconds
-                                                      "System uptime: %H, %M"
-                                                      (- (float-time (current-time))
-                                                         (string-to-number
-                                                          (shell-command-to-string
-                                                           "cat /proc/stat | awk '{if(NR == 6) print $2}'"))))))
-                                   (image "")
-                                   (str (emacs-uptime "%h:%.2m"))
-                                   (face 'my-unimportant-face))
-                              (propertize (concat " " image str)
-                                          'face face
-                                          'help-echo help-str
-                                          'mouse-face 'mode-line-highlight)))
+                    '(:eval (propertize (concat " " (emacs-uptime "%h:%.2m"))
+                                        'face 'my-unimportant-face
+                                        'help-echo (concat (format-time-string "Time: %Y-%m-%d %H:%M:%S\n")
+                                                           (format-sut-string "SUT: %Y-%m-%d")
+                                                           "\n"
+                                                           (emacs-uptime "Emacs uptime: %H, %M"))
+                                        'mouse-face 'mode-line-highlight))
 
                     ;; Gamify stats
                     '(:eval (let* ((stats (split-string gamify-mode-line-string))
