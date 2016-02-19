@@ -90,6 +90,9 @@
     (setq erc-keywords (delete keyword erc-keywords))
     (message (concat "Not tracking `" keyword "' anymore."))))
 
+(defun erc-cmd-LENNY (&rest args)
+  (erc-send-action (erc-default-target) "( ͡° ͜ʖ ͡°)"))
+
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
                      "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
                      "Lisp" "lisp" "Racket" "racket" "Scheme" "scheme"))
