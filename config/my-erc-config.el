@@ -93,6 +93,9 @@
 (defun erc-cmd-LENNY (&rest args)
   (erc-send-action (erc-default-target) "( ͡° ͜ʖ ͡°)"))
 
+(defun erc-cmd-DUNNO (&rest args)
+  (erc-send-action (erc-default-target) "¯\\_(ツ)_/¯"))
+
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
                      "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
                      "Lisp" "lisp" "Racket" "racket" "Scheme" "scheme"))
