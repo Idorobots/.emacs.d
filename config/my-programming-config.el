@@ -72,6 +72,7 @@
 (add-hook 'clojure-mode-hook 'common-programming-settings)
 (add-hook 'python-mode-hook 'common-programming-settings)
 (add-hook 'markdown-mode-hook 'common-programming-settings)
+(add-hook 'vhdl-mode-hook 'common-programming-settings)
 
 (require 'google-c-style)
 
