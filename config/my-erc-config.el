@@ -90,11 +90,13 @@
     (setq erc-keywords (delete keyword erc-keywords))
     (message (concat "Not tracking `" keyword "' anymore."))))
 
-(defun erc-cmd-LENNY (&rest args)
-  (erc-send-action (erc-default-target) "( ͡° ͜ʖ ͡°)"))
+(defmacro defemote (name emote)
+  `(defun ,(intern (concat "erc-cmd-" (symbol-name name))) (&rest args)
+     (erc-send-action (erc-default-target) ,emote)))
 
-(defun erc-cmd-DUNNO (&rest args)
-  (erc-send-action (erc-default-target) "¯\\_(ツ)_/¯"))
+(defemote LENNY "( ͡° ͜ʖ ͡°)")
+(defemote DUNNO "¯\\_(ツ)_/¯")
+(defemote OOH "乀(ˉεˉ乀)﻿")
 
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
                      "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
