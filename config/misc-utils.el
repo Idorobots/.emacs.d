@@ -100,4 +100,12 @@
             (format ":%02d" sut-m)
             (format ":%02d" sut-s))))
 
+(defun pl-income-tax (income cost social-security health-insurance)
+  (let ((base (- income cost social-security))
+        (threshold 85528))
+    (- (+ (* 0.18 (min base threshold))
+          (* 0.32 (max 0 (- base threshold))))
+       556.02
+       health-insurance)))
+
 (provide 'misc-utils)
