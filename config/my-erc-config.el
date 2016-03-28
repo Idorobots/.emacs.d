@@ -98,6 +98,7 @@
 (defemote DUNNO "¯\\_(ツ)_/¯")
 (defemote OOH "乀(ˉεˉ乀)﻿")
 (defemote BEAR "ʕ •ᴥ•ʔ")
+(defemote LOD "ಠ_ಠ")
 
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
                      "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
