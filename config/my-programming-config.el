@@ -73,6 +73,8 @@
 (add-hook 'python-mode-hook 'common-programming-settings)
 (add-hook 'markdown-mode-hook 'common-programming-settings)
 (add-hook 'vhdl-mode-hook 'common-programming-settings)
+(add-hook 'scala-mode-hook 'common-programming-settings)
+(add-hook 'scala-mode-hook 'ensime-mode)
 
 (require 'google-c-style)
 
