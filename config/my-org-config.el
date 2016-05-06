@@ -137,7 +137,7 @@
         ("n" "New note to self." entry (file+olp "~/org/doodles.org" "Notes")
          "* %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
         ("b" "Stuff to blog about." entry (file+olp "~/org/blog.org" "POSTS IDEAS" "Other")
-         "* UNSCHEDULED %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
+         "* SUSPENDED %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
         ("B" "Stuff to buy." entry (file+olp "~/org/stock.org" "BUY" "Other" "Other")
          "* %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
         ("R" "Stuff to read." entry (file+headline "~/org/someday.org" "READING")
