@@ -11,7 +11,7 @@
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 
 ;; Make Emacs sane:
-(set-face-attribute 'default nil :height 75)  ; Reasonable font size.
+(set-face-attribute 'default nil :height 90)  ; Reasonable font size.
 (setq inhibit-startup-message t)
 (setq next-line-add-newlines nil)             ; No newlines at the end of buffer.
 (setq scroll-preserve-screen-position t)
