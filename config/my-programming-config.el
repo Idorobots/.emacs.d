@@ -32,6 +32,13 @@
 ;; TOOLS
 ;;;;;;;;;;;;;;;;;;;;
 
+;; ENSIME
+(require 'ensime)
+(plist-put ensime-goto-test-config-defaults :test-class-suffixes
+           '("Spec" "Test" "Specification" "Check"))
+(plist-put ensime-goto-test-config-defaults :test-template-fn
+           'ensime-goto-test--test-template-scalatest-wordspec)
+
 ;; Whitespace highlighting mode:
 (require 'whitespace)
 (setq whitespace-style '(face spaces tabs trailing space-mark tab-mark))
@@ -73,8 +80,10 @@
 (add-hook 'python-mode-hook 'common-programming-settings)
 (add-hook 'markdown-mode-hook 'common-programming-settings)
 (add-hook 'vhdl-mode-hook 'common-programming-settings)
-(add-hook 'scala-mode-hook 'common-programming-settings)
-(add-hook 'scala-mode-hook 'ensime-mode)
+(add-hook 'scala-mode-hook (lambda ()
+                             (common-programming-settings)
+                             (ensime-mode)
+                             (define-key ensime-popup-buffer-map (kbd "<tab>") 'forward-button)))
 
 (require 'google-c-style)
 
