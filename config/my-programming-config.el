@@ -83,7 +83,8 @@
 (add-hook 'scala-mode-hook (lambda ()
                              (common-programming-settings)
                              (ensime-mode)
-                             (define-key ensime-popup-buffer-map (kbd "<tab>") 'forward-button)))
+                             (define-key ensime-popup-buffer-map (kbd "<tab>") 'forward-button)
+                             (define-key ensime-popup-buffer-map (kbd "<backtab>") 'backward-button)))
 
 (require 'google-c-style)
 
