@@ -33,6 +33,7 @@
 (use-package google-c-style)
 (use-package markdown-mode)
 (use-package org)
+(use-package protobuf-mode)
 (use-package sbt-mode)
 (use-package scala-mode2)
 (use-package slime)
