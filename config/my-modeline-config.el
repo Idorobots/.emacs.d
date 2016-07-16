@@ -7,7 +7,7 @@
 (require 'battery)
 (setq battery-status-function 'battery-linux-sysfs)
 (setq battery-mode-line-format "#%b %p %t")   ; NOTE Used by custom mode-line-format, do not change.
-(setq battery-load-critical 8)
+(setq battery-load-critical 5)
 (setq battery-load-low 25)
 (setq battery-level-warning t)
 (display-battery-mode t)
