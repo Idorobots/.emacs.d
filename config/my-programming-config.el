@@ -81,6 +81,8 @@
 (add-hook 'markdown-mode-hook 'common-programming-settings)
 (add-hook 'vhdl-mode-hook 'common-programming-settings)
 (add-hook 'js-mode-hook 'common-programming-settings)
+(add-hook 'css-mode-hook 'common-programming-settings)
+(add-hook 'typescript-mode-hook 'common-programming-settings)
 (add-hook 'scala-mode-hook (lambda ()
                              (common-programming-settings)
                              (ensime-mode)
@@ -97,6 +99,7 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 ;; Autoload patterns:
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 

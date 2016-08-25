@@ -39,6 +39,7 @@
 (use-package slime)
 (use-package sml-mode)
 (use-package sr-speedbar)
+(use-package typescript-mode)
 
 ;; .emacs.d config layout:
 (setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
