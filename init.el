@@ -35,7 +35,7 @@
 (use-package org)
 (use-package protobuf-mode)
 (use-package sbt-mode)
-(use-package scala-mode2)
+(use-package scala-mode)
 (use-package slime)
 (use-package sml-mode)
 (use-package sr-speedbar)
