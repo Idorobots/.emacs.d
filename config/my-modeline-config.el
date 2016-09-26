@@ -122,19 +122,9 @@
                     '(:eval (let ((file-name (buffer-file-name)))
                               (if file-name
                                   (let ((state-face (assoc (vc-state file-name) my-vc-alist))
-                                        (revision (vc-working-revision file-name))
                                         (backend (vc-backend file-name)))
-                                    (propertize (concat "%b"
-                                                        (when revision
-                                                          (concat "/" revision)))
-                                                'face (caddr state-face)
-                                                'mouse-face 'mode-line-highlight
-                                                'help-echo (concat file-name "\n"
-                                                                   (if backend
-                                                                       (concat "Version controlled by "
-                                                                               (symbol-name backend) "\n"
-                                                                               "Status: " (cadr state-face))
-                                                                     "Not version controlled."))))
+                                    (propertize (concat "%b" vc-mode)
+                                                'face (caddr state-face)))
                                 "%b")))
 
                     ;;'mode-line-position
@@ -213,7 +203,7 @@
                                           'face (cond ((>= load5 my-load-average-threshold)
                                                        'my-red-face)
                                                       ((>= load5 (/ my-load-average-threshold 2.0))
-                                                       ' my-yellow-face)
+                                                       'my-yellow-face)
                                                       (t
                                                        'my-unimportant-face))
                                           'help-echo (format (concat "Average system load:\n"
