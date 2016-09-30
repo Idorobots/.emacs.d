@@ -56,6 +56,8 @@
 (require 'git-blame)
 (setq vc-display-status t)
 
+(require 'google-c-style)
+
 (defun common-programming-settings ()
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
@@ -81,25 +83,23 @@
 (add-hook 'markdown-mode-hook 'common-programming-settings)
 (add-hook 'vhdl-mode-hook 'common-programming-settings)
 (add-hook 'js-mode-hook 'common-programming-settings)
-(add-hook 'css-mode-hook 'common-programming-settings)
 (add-hook 'typescript-mode-hook 'common-programming-settings)
+(add-hook 'css-mode-hook (lambda ()
+                           (common-programming-settings)
+                           (setq tab-width 2)))
+(add-hook 'c-mode-common-hook (lambda ()
+                                (common-programming-settings)
+                                (google-set-c-style)
+                                (c-toggle-electric-state 1)
+                                (c-toggle-auto-newline 1)))
 (add-hook 'scala-mode-hook (lambda ()
                              (common-programming-settings)
                              (ensime-mode)
                              (define-key ensime-popup-buffer-map (kbd "<tab>") 'forward-button)
                              (define-key ensime-popup-buffer-map (kbd "<backtab>") 'backward-button)))
 
-(require 'google-c-style)
-
-(defun my-c-mode-hook ()
-  (google-set-c-style)
-  (c-toggle-electric-state 1)
-  (c-toggle-auto-newline 1))
-
-(add-hook 'c-mode-common-hook 'my-c-mode-hook)
-
 ;; Autoload patterns:
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode))
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 
