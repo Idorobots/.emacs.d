@@ -102,6 +102,7 @@
 (defemote TABLEFLIP "(ノ `⌒´)ノ︵ ┻━┻")
 (defemote ROLLINGEYES "◔_◔")
 (defemote FAITHLOST "ب_ب")
+(defemote DONE "ᕕ( ᐛ )ᕗ")
 
 (setq erc-keywords `((,erc-button-url-regexp (:inherit link)) ; Better url display.
                      "Clojure" "clojure" "Emacs" "emacs" "Erlang" "erlang"
