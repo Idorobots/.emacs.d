@@ -76,6 +76,7 @@ point reaches the beginning or end of the buffer, stop there."
       '(eshell-mode
         term-mode
         erc-mode
+        org-mode
         org-agenda-mode
         ack-mode))
 
