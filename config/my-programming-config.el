@@ -73,6 +73,7 @@
 (add-hook 'scheme-mode-hook 'common-programming-settings)
 (add-hook 'sml-mode-hook 'common-programming-settings)
 (add-hook 'latex-mode-hook 'common-programming-settings)
+(add-hook 'yaml-mode-hook 'common-programming-settings)
 (add-hook 'ruby-mode-hook 'common-programming-settings)
 (add-hook 'sql-mode-hook 'common-programming-settings)
 (add-hook 'erlang-mode-hook 'common-programming-settings)
