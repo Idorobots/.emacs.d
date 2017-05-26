@@ -38,7 +38,8 @@
 (add-hook 'erc-mode-hook
           (lambda ()
             (pcomplete-erc-setup)
-            (erc-completion-mode 1)))
+            (erc-completion-mode 1)
+            (emojify-mode 1)))
 
 (add-hook 'erc-after-connect
           (lambda (&rest skip)
