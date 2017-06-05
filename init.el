@@ -19,6 +19,7 @@
 (setq use-package-always-ensure t)
 
 ;; Some required packages:
+(use-package arduino-mode)
 (use-package autopair)
 (use-package cider)
 (use-package clojure-mode)
