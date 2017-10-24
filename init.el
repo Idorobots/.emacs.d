@@ -25,6 +25,7 @@
 (use-package clojure-mode)
 (use-package color-theme)
 (use-package d-mode)
+(use-package elm-mode)
 (use-package emojify)
 (use-package ensime)
 (use-package erlang)
