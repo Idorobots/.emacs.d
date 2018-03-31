@@ -40,6 +40,7 @@
             (pcomplete-erc-setup)
             (erc-completion-mode 1)
             (emojify-mode 1)
+            (auto-complete-mode)
             (ac-emoji-setup)))
 
 (add-hook 'erc-after-connect
