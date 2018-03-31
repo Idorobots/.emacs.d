@@ -32,12 +32,7 @@
 ;; TOOLS
 ;;;;;;;;;;;;;;;;;;;;
 
-;; ENSIME
-(require 'ensime)
-(plist-put ensime-goto-test-config-defaults :test-class-suffixes
-           '("Spec" "Test" "Specification" "Check"))
-(plist-put ensime-goto-test-config-defaults :test-template-fn
-           'ensime-goto-test--test-template-scalatest-wordspec)
+(setq exec-path (cons "/usr/bin/sbt" exec-path))
 
 ;; Whitespace highlighting mode:
 (require 'whitespace)
@@ -99,9 +94,8 @@
                                 (c-toggle-auto-newline 1)))
 (add-hook 'scala-mode-hook (lambda ()
                              (common-programming-settings)
-                             (ensime-mode)
-                             (define-key ensime-popup-buffer-map (kbd "<tab>") 'forward-button)
-                             (define-key ensime-popup-buffer-map (kbd "<backtab>") 'backward-button)))
+                             (auto-complete-mode)
+                             (ac-etags-setup)))
 
 ;; Autoload patterns:
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))

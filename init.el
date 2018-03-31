@@ -19,6 +19,7 @@
 (setq use-package-always-ensure t)
 
 ;; Some required packages:
+(use-package ac-etags)
 (use-package arduino-mode)
 (use-package autopair)
 (use-package cider)
@@ -27,7 +28,6 @@
 (use-package d-mode)
 (use-package elm-mode)
 (use-package emojify)
-(use-package ensime)
 (use-package erlang)
 (use-package fic-mode)
 (use-package full-ack)
