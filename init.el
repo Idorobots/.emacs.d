@@ -19,6 +19,7 @@
 (setq use-package-always-ensure t)
 
 ;; Some required packages:
+(use-package ac-emoji)
 (use-package ac-etags)
 (use-package arduino-mode)
 (use-package autopair)

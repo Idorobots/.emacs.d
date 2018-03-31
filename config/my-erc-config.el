@@ -39,7 +39,8 @@
           (lambda ()
             (pcomplete-erc-setup)
             (erc-completion-mode 1)
-            (emojify-mode 1)))
+            (emojify-mode 1)
+            (ac-emoji-setup)))
 
 (add-hook 'erc-after-connect
           (lambda (&rest skip)
