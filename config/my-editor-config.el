@@ -133,7 +133,7 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'recentf)
 (setq recentf-save-file (concat my-tmp-dir "recentf.lst"))
 (setq recentf-auto-cleanup 'never)
-(setq recentf-max-saved-items 100)
+(setq recentf-max-saved-items 500)
 (setq recentf-max-menu-items 25)
 (recentf-mode t)
 
