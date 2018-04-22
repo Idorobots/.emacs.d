@@ -100,12 +100,20 @@
             (format ":%02d" sut-m)
             (format ":%02d" sut-s))))
 
+(defun pl-income-tax-free-sum (base)
+  (cond ((< base 6600.00) 1188.00)
+        ((< base 11000.00) (- 1188.00 (/ (* 631.98 (- base 6600.00)) 4400.00)))
+        ((< base 85528.00) 556.02)
+        ((< base 127000.00) (- 556.02 (/ (* 556.02 (- base 85528.00)) 41472.00)))
+        (:else 0)))
+
 (defun pl-income-tax (income cost social-security health-insurance)
   (let ((base (round (- income cost social-security)))
         (threshold 85528))
-    (- (+ (* 0.18 (min base threshold))
-          (* 0.32 (max 0 (- base threshold))))
-       556.02
-       health-insurance)))
+    (round (max 0
+                (- (+ (* 0.18 (min base threshold))
+                      (* 0.32 (max 0 (- base threshold))))
+                   (pl-income-tax-free-sum base)
+                   health-insurance)))))
 
 (provide 'misc-utils)
