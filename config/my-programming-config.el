@@ -13,6 +13,7 @@
 (autoload 'ack-find-same-file "full-ack" "Ack source search." t)
 (autoload 'ack-find-file "full-ack" "Ack source search." t)
 (autoload 'prolog-mode "prolog" "Major mode for editing Prolog code." t)
+(autoload 'scad-mode "scad" "Major mode for editing OpenSCAD files." t)
 
 ;; Common Lisp interaction:
 (setq inferior-lisp-program "/usr/bin/sbcl")

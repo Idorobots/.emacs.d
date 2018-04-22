@@ -39,6 +39,8 @@
 (use-package org)
 (use-package protobuf-mode)
 (use-package sbt-mode)
+(use-package scad-mode)
+(use-package scad-preview)
 (use-package scala-mode)
 (use-package slime)
 (use-package sml-mode)
