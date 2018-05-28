@@ -316,23 +316,6 @@
            :nick freenode-username
            :password freenode-pass))
 
-(defun start-slack (&optional port)
-  "Start to waste time on IRC with ERC."
-  (interactive)
-  (require 'secrets secrets-file)
-  (require 'tls)
-  ;; Enable sane logging:
-  (and erc-log-timer (cancel-timer erc-log-timer))
-  (setq erc-log-timer (run-at-time erc-log-auto-save-interval
-                                   erc-log-auto-save-interval
-                                   (lambda ()
-                                     (erc-log-save-all-buffers)
-                                     (sit-for 0))))
-  (erc-tls :server slack-server
-           :port (if port port 6667)
-           :nick slack-username
-           :password slack-pass))
-
 (defun start-chat ()
   "Starts all the chats"
   (interactive)
