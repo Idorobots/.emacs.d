@@ -243,33 +243,38 @@
       (setq gamify-last-pretty-stats-time current-time)
       (setq gamify-last-pretty-stats-msg
             (concat "Your Gamify stats:\n"
-               (apply #'concat
-                 (map 'list
-                      (lambda (e)
-                        (let* ((name (car e))
-                               (pretty-name (gamify-stat-name name))
-                               (mod-time (nth 2 e))
-                               (total-exp (gamify-get-total-exp name (list name)))
-                               (achievements (gamify-get-achievements name))
-                               (level (gamify-get-level total-exp))
-                               (time-delta (- current-time mod-time))
-                               (rustiness (gamify-rusty-p name))
-                               (rustiness-str (cond ((equal rustiness 'very-rusty)
-                                                     " (Very rusty)")
-                                                    ((equal rustiness 'rusty)
-                                                     " (Rusty)")
-                                                    (t ""))))
-                          (unless (member (caar level) skip-levels)
-                            (format "%s%s %s %s%s: %d/%d (%d%%)\n"
-                                    (caar level)
-                                    (if achievements "*" "")
-                                    (gamify-get-preposition pretty-name)
-                                    pretty-name
-                                    rustiness-str
-                                    total-exp
-                                    (cddr level)
-                                    (gamify-get-level-percentage total-exp)))))
-                      gamify-stats-alist))))))
+                    (apply #'concat
+                           (map 'list
+                                (lambda (e)
+                                  (let* ((name (car e))
+                                         (pretty-name (gamify-stat-name name))
+                                         (mod-time (nth 2 e))
+                                         (total-exp (gamify-get-total-exp name (list name)))
+                                         (achievements (gamify-get-achievements name))
+                                         (level (gamify-get-level total-exp))
+                                         (time-delta (- current-time mod-time))
+                                         (rustiness (gamify-rusty-p name))
+                                         (rustiness-str (cond ((equal rustiness 'very-rusty)
+                                                               " (Very rusty)")
+                                                              ((equal rustiness 'rusty)
+                                                               " (Rusty)")
+                                                              (t ""))))
+                                    (unless (member (caar level) skip-levels)
+                                      (format "%s%s %s %s%s: %d/%d (%d%%)\n"
+                                              (caar level)
+                                              (if achievements "*" "")
+                                              (gamify-get-preposition pretty-name)
+                                              pretty-name
+                                              rustiness-str
+                                              total-exp
+                                              (cddr level)
+                                              (gamify-get-level-percentage total-exp)))))
+                                (sort (copy-seq gamify-stats-alist)
+                                      (lambda (a b)
+                                        (let ((a-name (car a))
+                                              (b-name (car b)))
+                                          (> (gamify-get-total-exp a-name (list a-name))
+                                             (gamify-get-total-exp b-name (list b-name))))))))))))
   gamify-last-pretty-stats-msg)
 
 (defvar gamify-dot-layout-algorithm "dot")
