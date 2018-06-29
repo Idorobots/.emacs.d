@@ -33,7 +33,6 @@
 (use-package fic-mode)
 (use-package full-ack)
 (use-package git)
-(use-package git-blame)
 (use-package google-c-style)
 (use-package markdown-mode)
 (use-package org)

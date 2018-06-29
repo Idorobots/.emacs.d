@@ -49,7 +49,6 @@
 
 ;; Git support:
 (require 'git)
-(require 'git-blame)
 (setq vc-display-status t)
 
 (require 'google-c-style)
