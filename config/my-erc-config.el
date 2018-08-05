@@ -163,8 +163,7 @@
                                      "#d"
                                      "#erlang"
                                      "#lisp-pl"
-                                     "#stosowana")
-                                    ("localhost" "&bitlbee")))
+                                     "#stosowana")))
 
 ;; Make channels floodable by default.
 (setq erc-server-flood-penalty 0)
@@ -247,57 +246,8 @@
             (erc-propertize ": " 'face 'erc-default-face))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; BITLBEE TODO Parse the BitlBee config files.
-;;;;;;;;;;;;;;;;;;;;
-
-(setq bitlbee-is-running-p nil)
-(setq bitlbee-config-dir (expand-file-name "~/.bitlbee"))
-
-(defun bitlbee-start-if-not-running ()
-  (unless (or bitlbee-is-running-p
-              ;;(is-process-running "bitlbee")
-              )
-    (setq bitlbee-is-running-p t)
-    (shell-command (concat "bitlbee -F -d "
-                           bitlbee-config-dir))))
-
-(defun bitlbee-add-buddies ()
-  (interactive)
-  (erc-message "PRIVMSG" "&bitlbee yes")
-  (erc-message "PRIVMSG" "&bitlbee yes")
-  (dolist (buddy bitlbee-buddy-list)
-    (erc-message "PRIVMSG" (format "&bitlbee add gg %s %s"  ;; FIXME Another hack to go around BitlBees
-                                   (car buddy)              ;; FIXME problems with Gadu-Gadu protocol.
-                                   (cdr buddy))))
-  (erc-message "PRIVMSG" "&bitlbee blist all")
-  (message "Buddy list loaded!"))
-
-(add-hook 'erc-join-hook
-          (lambda ()
-            (when (and (string= "localhost" erc-session-server)
-                       (string= "&bitlbee" (buffer-name)))
-              (bitlbee-add-buddies))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UTILS
 ;;;;;;;;;;;;;;;;;;;;
-
-(defun start-bitlbee (&optional port)
-  "Start wasting time on BitlBee..."
-  (interactive)
-  (bitlbee-start-if-not-running)
-  (require 'secrets secrets-file)
-  ;; Enable sane logging:
-  (and erc-log-timer (cancel-timer erc-log-timer))
-  (setq erc-log-timer (run-at-time erc-log-auto-save-interval
-                                   erc-log-auto-save-interval
-                                   (lambda ()
-                                     (erc-log-save-all-buffers)
-                                     (sit-for 0))))
-  (erc :server "localhost"
-       :port (if port port 6667)
-       :nick bitlbee-username
-       :password bitlbee-pass))
 
 (defun start-irc (&optional port)
   "Start to waste time on IRC with ERC."
@@ -319,7 +269,6 @@
 (defun start-chat ()
   "Starts all the chats"
   (interactive)
-  (start-irc)
-  (start-bitlbee))
+  (start-irc))
 
 (provide 'my-erc-config)
