@@ -51,6 +51,11 @@
                                               ("#lisp-pl" "polish")
                                               ("irc.freenode.net:6667" "american")))))
 
+;; Line filling behaviour:
+(add-hook 'window-configuration-change-hook
+          '(lambda ()
+             (setq erc-fill-column (- (window-width) 2))))
+
 ;; Tracking different events:
 (require 'erc-track)
 
