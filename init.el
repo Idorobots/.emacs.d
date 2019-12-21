@@ -5,7 +5,6 @@
 ;; ELPA stuff:
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)

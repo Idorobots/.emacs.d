@@ -540,20 +540,14 @@
            (stats (or gamify-stats-instead (org-get-tags-at pos)))
            (curr-date (calendar-absolute-from-gregorian (calendar-current-date)))
            (date curr-date)
-           (gamify-exp (assoc gamify-exp-property
-                              (org-entry-properties pos)))
-           (exp-str (if gamify-exp
-                        (cdr gamify-exp)
-                        "0"))
+           (gamify-exp (org-entry-get pos gamify-exp-property))
+           (exp-str (or gamify-exp "0"))
            (exp-val (read exp-str))
            (exp (round (* (cond ((numberp exp-val) exp-val)
                                 ((listp exp-val)   (apply #'gamify-some-exp exp-val))
                                 (t                 0))
                           gamify-exp-factor)))
-           (gamify-achievement (assoc gamify-achievement-property
-                                      (org-entry-properties pos)))
-           (achievement-str (when gamify-achievement
-                              (cdr gamify-achievement)))
+           (achievement-str (org-entry-get pos gamify-achievement-property))
            ;; Add new achievement to the achievement list.
            (achievement-id (when achievement-str
                              (gamify-add-achievement achievement-str))))
@@ -633,11 +627,9 @@
   (interactive)
   (when (string= (buffer-name) org-agenda-buffer-name)
     (let* ((marker (get-text-property (point) 'org-hd-marker))
-           (props (org-entry-properties marker))
-           (exp (assoc gamify-exp-property props))
-           (tags (assoc "ALLTAGS" props))
+           (tags (org-entry-get marker "ALLTAGS"))
            (tags-list (when tags
-                        (delq "" (split-string (cdr tags) ":")))))
+                        (delq "" (split-string tags ":")))))
       (gamify-focus-on tags-list))))
 
 (defun gamify-start ()

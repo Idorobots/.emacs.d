@@ -28,6 +28,7 @@
 (setq org-hide-block-startup t)
 (setq org-startup-folded 'content)
 (setq org-log-into-drawer 't)
+(setq org-element-use-cache 't)
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -104,9 +105,9 @@
 (setq org-agenda-log-mode-items '(closed clock state))
 (setq org-agenda-current-time-string #("------NOW------" 0 15 (org-heading t)))
 (setq org-agenda-time-grid '((daily today require-timed remove-match)
-                             #("---------------" 0 15 (org-heading t))
-                             (700 800 900 1000 1100 1200 1300 1400 1500
-                                  1600 1700 1800 1900 2000 2100 2200 2300)))
+                             (700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300)
+                             #("......" 0 6 (org-heading t))
+                             #("---------------" 0 15 (org-heading t))))
 (setq org-agenda-start-on-weekday nil)            ; Start on 'today.
 (setq org-agenda-scheduled-leaders '("" "%dd. ago: "))
 (setq org-agenda-deadline-leaders '("" "In %dd.: "))
@@ -193,15 +194,14 @@
     (let* ((curr-time (current-time))
            (pos (plist-get arg :position))
            (done-p (equal (plist-get arg :to) "DONE"))
-           (repetition (assoc spaced-repetition-property
-                              (org-entry-properties pos))))
+           (repetition (org-entry-get pos spaced-repetition-property)))
       (when repetition
         (goto-char pos)
         (save-excursion
           (save-restriction
             (save-match-data
               (org-narrow-to-subtree)
-              (let ((rep (string-to-number (cdr repetition))))
+              (let ((rep (string-to-number repetition)))
                 (when (re-search-forward org-scheduled-time-regexp nil t)
                   (replace-match (concat "SCHEDULED: "
                                          (spaced-repetition-next-time (if done-p rep 1) curr-time))
@@ -258,10 +258,10 @@
              org-capture-templates))
 
 (defun org-agenda-gamify-prefix ()
-  (let* ((gamify-exp (assoc gamify-exp-property (org-entry-properties)))
-         (gamify-achievement (assoc gamify-achievement-property (org-entry-properties)))
+  (let* ((gamify-exp (org-entry-get nil gamify-exp-property))
+         (gamify-achievement (org-entry-get nil gamify-achievement-property))
          (exp-val (when gamify-exp
-                    (read (cdr gamify-exp)))))
+                    (read gamify-exp))))
     (concat (cond ((numberp exp-val)
                    (number-to-string exp-val))
                   ((null exp-val) "")
