@@ -110,7 +110,7 @@
                              #("---------------" 0 15 (org-heading t))))
 (setq org-agenda-start-on-weekday nil)            ; Start on 'today.
 (setq org-agenda-scheduled-leaders '("" "%dd. ago: "))
-(setq org-agenda-deadline-leaders '("" "In %dd.: "))
+(setq org-agenda-deadline-leaders '("" "In %dd.: " "%dd. ago: "))
 
 ;; Org-Agenda files stored in one place:
 (setq org-agenda-files '("~/org/"))
