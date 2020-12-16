@@ -165,9 +165,7 @@
 (require 'erc-join)
 (setq erc-autojoin-channels-alist '(("freenode.net"
                                      "#clojure"
-                                     "#d"
                                      "#erlang"
-                                     "#lisp-pl"
                                      "#stosowana")))
 
 ;; Make channels floodable by default.
