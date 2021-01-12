@@ -12,3 +12,8 @@ network-security.data
 emojis
 %backup%~
 ac-comphist.dat
+.cache/
+.dap-breakpoints
+.lsp-session-v1
+tutorial/
+.org-id-locations
