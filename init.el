@@ -2,17 +2,21 @@
 ;; GENERAL SETTINGS
 ;;;;;;;;;;;;;;;;;;;;
 
+(require 'package)
+
 ;; ELPA stuff:
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
+(add-to-list 'package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                                 ("melpa" . "https://melpa.org/packages/")
+                                 ("org" . "http://orgmode.org/elpa/")))
 
 (package-initialize)
+
 (unless package-archive-contents
   (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
 (require 'use-package)
 
 (setq use-package-always-ensure t)
@@ -25,21 +29,29 @@
 (use-package cider)
 (use-package clojure-mode)
 (use-package color-theme)
+(use-package company-lsp)
+(use-package dap-mode)
 (use-package d-mode)
 (use-package elm-mode)
 (use-package emojify)
 (use-package erlang)
 (use-package fic-mode)
+(use-package flycheck)
 (use-package full-ack)
 (use-package git)
 (use-package google-c-style)
+(use-package lsp-mode)
+(use-package lsp-metals)
+(use-package lsp-ui)
 (use-package markdown-mode)
 (use-package org)
+(use-package posframe)
 (use-package protobuf-mode)
 (use-package sbt-mode)
 (use-package scad-mode)
 (use-package scad-preview)
 (use-package scala-mode)
+(use-package sbt-mode)
 (use-package slime)
 (use-package sml-mode)
 (use-package sr-speedbar)

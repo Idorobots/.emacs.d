@@ -53,12 +53,15 @@
 
 (require 'google-c-style)
 
+;; LSP support:
+(require 'lsp-mode)
+
 (defun common-programming-settings ()
   (setq indent-tabs-mode nil)
   (setq tab-width 2)
   (hs-minor-mode t)
   (unless (null (buffer-file-name))
-    (flymake-mode t))
+    (flycheck-mode t))
   (fic-mode t)
   (whitespace-mode t)
   (autopair-mode t))
@@ -95,7 +98,19 @@
 (add-hook 'scala-mode-hook (lambda ()
                              (common-programming-settings)
                              (auto-complete-mode)
-                             (ac-etags-setup)))
+                             (lsp)))
+(add-hook 'sbt-mode-hook (lambda ()
+                             (auto-complete-mode)
+                             (setq sbt:program-options '("-Dsbt.supershell=false"))
+                             (lsp)))
+(add-hook 'lsp-mode-hook (lambda ()
+                           (dap-mode t)
+                           (dap-ui-mode t)
+                           (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+                           (setq lsp-prefer-flymake nil)
+                           (setq lsp-enable-snippet nil)
+                           (setq lsp-metals-treeview-show-when-views-received nil)))
+
 
 ;; Autoload patterns:
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
