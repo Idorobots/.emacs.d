@@ -5,9 +5,9 @@
 (require 'package)
 
 ;; ELPA stuff:
-(add-to-list 'package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                                 ("melpa" . "https://melpa.org/packages/")
-                                 ("org" . "http://orgmode.org/elpa/")))
+(add-to-list 'package-archives '("gnu" . "https://gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 
 (package-initialize)
 

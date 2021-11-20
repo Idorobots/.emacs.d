@@ -119,8 +119,8 @@
 (defun format-consultancy-hours (format date start end break)
   (if (equal date "")
       (format-seconds format 0)
-    (format-seconds format (- (cadr (time-subtract (date-to-time (concat date " " end))
-                                                   (date-to-time (concat date " " start))))
-                            (* (string-to-number break) 60)))))
+    (format-seconds format (- (time-subtract (date-to-time (concat date " " end))
+                                             (date-to-time (concat date " " start)))
+                              (* (string-to-number break) 60)))))
 
 (provide 'misc-utils)

@@ -53,7 +53,8 @@
    (org-level-4 ((t (:inherit 'outline-6))))
    (org-level-5 ((t (:inherit 'outline-8))))
    (org-level-6 ((t (:inherit 'outline-4))))
-   (org-level-8 ((t (:foreground "#76ab35"))))))
+   (org-level-8 ((t (:foreground "#76ab35"))))
+   (org-headline-done ((t (:foreground "dim gray"))))))
 
 ;; Auto-suspend SUSPENDED tasks:
 (defmacro deftoggler (name state)
