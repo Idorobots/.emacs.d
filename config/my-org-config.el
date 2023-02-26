@@ -450,6 +450,6 @@
       (let* ((index (random len))
              (selected (nth index filtered)))
         (goto-char (cadr selected))
-        (nth 4 (car selected))))))
+        (format "%s available entries" (length filtered))))))
 
 (provide 'my-org-config)
