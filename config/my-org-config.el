@@ -431,4 +431,25 @@
    (ruby . t)
    (scheme . t)))
 
+;; Random entry selection
+
+(defun org-random-entry ()
+  (let* ((entries (org-map-entries (lambda ()
+                                     (list (org-heading-components)
+                                           (point)))
+                                   nil))
+         (filtered (cl-remove-if (lambda (e)
+                                   (let ((state (nth 2 (car e))))
+                                     (or (string= state "DONE")
+                                         (string= state "CANCELLED")
+                                         (string= state "SUSPENDED"))))
+                                 entries))
+         (len (length filtered)))
+    (if (= len 0)
+        "No entries"
+      (let* ((index (random len))
+             (selected (nth index entries)))
+        (goto-char (cadr selected))
+        (nth 4 (car selected))))))
+
 (provide 'my-org-config)
