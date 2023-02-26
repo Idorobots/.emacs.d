@@ -34,7 +34,11 @@
           (lambda ()
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
-            (visual-line-mode t)))
+            (visual-line-mode t)
+            ;; Pretty images in a buffer:
+            (local-set-key (kbd "M-i") 'org-toggle-inline-images)
+            (local-set-key (kbd "C-<tab>") 'org-force-cycle-archived)
+            ))
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d!)")
@@ -77,9 +81,6 @@
 ;; Links and hyperrefs:
 (setq org-return-follows-link t)
 (setq org-link-search-must-match-exact-headline nil)
-
-;; Pretty images in a buffer: ;; TODO Make this org-mode local.
-(global-set-key (kbd "M-i") 'org-toggle-inline-images)
 
 ;; Other modes:
 (require 'autopair)
