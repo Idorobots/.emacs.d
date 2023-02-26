@@ -8,6 +8,7 @@
 (add-to-list 'package-archives '("gnu" . "https://gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (package-initialize)
 
@@ -57,6 +58,7 @@
 (use-package sr-speedbar)
 (use-package typescript-mode)
 (use-package yaml-mode)
+(use-package go-mode)
 
 ;; .emacs.d config layout:
 (setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
