@@ -442,14 +442,13 @@
          (filtered (cl-remove-if (lambda (e)
                                    (let ((state (nth 2 (car e))))
                                      (or (string= state "DONE")
-                                         (string= state "CANCELLED")
-                                         (string= state "SUSPENDED"))))
+                                         (string= state "CANCELLED"))))
                                  entries))
          (len (length filtered)))
     (if (= len 0)
         "No entries"
       (let* ((index (random len))
-             (selected (nth index entries)))
+             (selected (nth index filtered)))
         (goto-char (cadr selected))
         (nth 4 (car selected))))))
 
