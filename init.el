@@ -22,6 +22,8 @@
 
 (setq use-package-always-ensure t)
 
+(use-package quelpa)
+
 ;; Some required packages:
 (use-package ac-emoji)
 (use-package ac-etags)
@@ -58,6 +60,12 @@
 (use-package typescript-mode)
 (use-package yaml-mode)
 (use-package go-mode)
+
+;; QUELPA packages:
+(quelpa '(chatgpt-shell :repo Idorobots/chatgpt-shell :fetcher github))
+;; TODO Use these instead of site-lisp.
+;;(quelpa '(mode-line-stats :repo Idorobots/mode-line-stats :fetcher github))
+;;(quelpa '(gamify :repo Idorobots/gamify-el :fetcher github))
 
 ;; .emacs.d config layout:
 (setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
