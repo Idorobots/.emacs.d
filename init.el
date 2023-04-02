@@ -30,6 +30,7 @@
 (use-package cider)
 (use-package clojure-mode)
 (use-package color-theme)
+(use-package company)
 (use-package company-lsp)
 (use-package dap-mode)
 (use-package d-mode)
