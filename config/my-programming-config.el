@@ -209,5 +209,19 @@
 
 (global-set-key (kbd "C-c s") 'sr-speedbar-toggle)
 
+;;;;;;;;;;;;;;;;
+;; ChatGPT
+;;;;;;;;;;;
+
+(require 'chatgpt-shell)
+
+(setq chatgpt-shell-chatgpt-streaming t)
+(add-to-list 'chatgpt-shell-language-mapping
+             '("racket" . "scheme"))
+(add-to-list 'chatgpt-shell-language-mapping
+             '("scala" . "scala"))
+(add-to-list 'chatgpt-shell-language-mapping
+             '("python" . "python"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (provide 'my-programming-config)
