@@ -5,7 +5,6 @@
 (require 'package)
 
 ;; ELPA stuff:
-(add-to-list 'package-archives '("gnu" . "https://gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -22,18 +21,14 @@
 
 (setq use-package-always-ensure t)
 
-(use-package quelpa)
-
 ;; Some required packages:
 (use-package ac-emoji)
 (use-package ac-etags)
 (use-package arduino-mode)
-(use-package autopair)
 (use-package cider)
 (use-package clojure-mode)
 (use-package color-theme)
 (use-package company)
-(use-package company-lsp)
 (use-package dap-mode)
 (use-package d-mode)
 (use-package elm-mode)
@@ -42,6 +37,7 @@
 (use-package fic-mode)
 (use-package flycheck)
 (use-package full-ack)
+(use-package geiser)
 (use-package git)
 (use-package google-c-style)
 (use-package lsp-mode)
@@ -51,6 +47,8 @@
 (use-package org)
 (use-package posframe)
 (use-package protobuf-mode)
+(use-package phi-autopair)
+(use-package quelpa)
 (use-package sbt-mode)
 (use-package scala-mode)
 (use-package sbt-mode)
@@ -58,6 +56,7 @@
 (use-package sml-mode)
 (use-package sr-speedbar)
 (use-package typescript-mode)
+(use-package terraform-mode)
 (use-package yaml-mode)
 (use-package go-mode)
 
@@ -115,6 +114,9 @@
 
 ;; Start the Emacs Server:
 (server-start)
+
+;; Custom variables:
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
