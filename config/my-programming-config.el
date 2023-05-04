@@ -46,7 +46,7 @@
 
 ;; Automatic parentheses pairing:
 (require 'phi-autopair)
-(set phi-autopair-cautious-close nil)
+(setq phi-autopair-cautious-close nil)
 
 ;; Git support:
 (require 'git)
