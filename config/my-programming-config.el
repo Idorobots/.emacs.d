@@ -45,7 +45,8 @@
 (require 'fic-mode)
 
 ;; Automatic parentheses pairing:
-(require 'autopair)
+(require 'phi-autopair)
+(set phi-autopair-cautious-close nil)
 
 ;; Git support:
 (require 'git)
@@ -64,7 +65,7 @@
     (flycheck-mode t))
   (fic-mode t)
   (whitespace-mode t)
-  (autopair-mode t))
+  (phi-autopair-mode t))
 
 (add-hook 'emacs-lisp-mode-hook 'common-programming-settings)
 (add-hook 'lisp-mode-hook 'common-programming-settings)

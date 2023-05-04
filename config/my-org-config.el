@@ -83,8 +83,8 @@
 (setq org-link-search-must-match-exact-headline nil)
 
 ;; Other modes:
-(require 'autopair)
-(add-hook 'org-mode-hook 'autopair-mode)
+(require 'phi-autopair)
+(add-hook 'org-mode-hook 'phi-autopair-mode)
 
 (require 'whitespace)
 (add-hook 'org-mode-hook 'whitespace-mode)
