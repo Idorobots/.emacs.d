@@ -1,13 +1,15 @@
 ;;; my-editor-config.el --- My Editor config.
 
-;; Maximize on start
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; Pretty themes:
+(setq custom-safe-themes
+   '("d4ab40cbb11eae102dc167b8da5f5ef2a8d3dd10081cec7e7d64e579836188ed"
+     "c64b66821065a5c282f1eb41e3d98f2ef9e60f9214ef329dfe6ff80be56d0ea4"
+     "911ff1eb36c021a4f172bd3ac48b4d64ac5ceff633e12398fcc5b7b420626b59"
+     default))
+(load-theme 'custom-org-mode t)
+(load-theme 'custom-erc-mode t)
+(load-theme 'old-dark-tango t)
 
-;; Pretty color theme:
-(require 'color-theme)
-(color-theme-initialize)
-(require 'color-theme-tango)
-(color-theme-tango)
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 
 ;; Make Emacs sane:

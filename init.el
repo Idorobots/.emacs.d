@@ -2,9 +2,32 @@
 ;; GENERAL SETTINGS
 ;;;;;;;;;;;;;;;;;;;;
 
+;; .emacs.d config layout:
+(setq my-config-dir (expand-file-name "~/.emacs.d/config/"))
+(setq my-themes-dir (expand-file-name "~/.emacs.d/config/themes/"))
+(setq my-site-dir (expand-file-name "~/.emacs.d/config/site-lisp/"))
+
+(setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
+(setq my-backups-dir (expand-file-name "~/.emacs.d/backups/"))
+(setq my-stuff-dir (expand-file-name "~/.emacs.d/stuff/"))
+(setq my-logs-dir (expand-file-name "~/.emacs.d/logs/"))
+(setq my-tmp-dir (expand-file-name "~/.emacs.d/tmps/"))
+
+;; Extended load-path:
+(add-to-list 'load-path my-config-dir)
+(add-to-list 'load-path my-site-dir)
+(add-to-list 'custom-theme-load-path my-themes-dir)
+
+;; Some important files:
+(setq secrets-file (concat my-config-dir "secrets.el.gpg"))
+
+;; Theme & stuff
+(toggle-frame-maximized)
+(require 'my-editor-config)
+
+;; Extra packages
 (require 'package)
 
-;; ELPA stuff:
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -27,7 +50,6 @@
 (use-package arduino-mode)
 (use-package cider)
 (use-package clojure-mode)
-(use-package color-theme)
 (use-package company)
 (use-package dap-mode)
 (use-package d-mode)
@@ -64,25 +86,6 @@
 ;; TODO Use these instead of site-lisp.
 ;;(quelpa '(mode-line-stats :repo Idorobots/mode-line-stats :fetcher github))
 ;;(quelpa '(gamify :repo Idorobots/gamify-el :fetcher github))
-
-;; .emacs.d config layout:
-(setq my-sessions-dir (expand-file-name "~/.emacs.d/sessions/"))
-(setq my-backups-dir (expand-file-name "~/.emacs.d/backups/"))
-(setq my-config-dir (expand-file-name "~/.emacs.d/config/"))
-(setq my-stuff-dir (expand-file-name "~/.emacs.d/stuff/"))
-(setq my-site-dir (expand-file-name "~/.emacs.d/site-lisp/"))
-(setq my-tmp-dir (expand-file-name "~/.emacs.d/tmps/"))
-(setq my-logs-dir (expand-file-name "~/.emacs.d/logs/"))
-
-;; Extended load-path:
-(add-to-list 'load-path my-site-dir)
-(add-to-list 'load-path my-config-dir)
-
-;; Some important files:
-(setq secrets-file (concat my-config-dir "secrets.el.gpg"))
-
-;; My Editor config:
-(require 'my-editor-config)
 
 ;; My Gamify config:
 (require 'my-gamify-config)
@@ -122,7 +125,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(geiser chatgpt-shell quelpa company yaml-mode use-package typescript-mode sr-speedbar sml-mode slime sbt-mode protobuf-mode lsp-ui lsp-metals google-c-style go-mode git full-ack flycheck fic-mode erlang emojify elm-mode d-mode color-theme cider arduino-mode ac-etags ac-emoji)))
+   '(yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
