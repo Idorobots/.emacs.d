@@ -44,10 +44,6 @@
 ;; FIXME, TODO, BUG, NOTE, etc highlighting:
 (require 'fic-mode)
 
-;; Automatic parentheses pairing:
-(require 'phi-autopair)
-(setq phi-autopair-cautious-close nil)
-
 ;; Git support:
 (require 'git)
 (setq vc-display-status t)
@@ -65,7 +61,7 @@
     (flycheck-mode t))
   (fic-mode t)
   (whitespace-mode t)
-  (phi-autopair-mode t))
+  (electric-pair-mode t))
 
 (add-hook 'emacs-lisp-mode-hook 'common-programming-settings)
 (add-hook 'lisp-mode-hook 'common-programming-settings)

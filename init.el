@@ -47,7 +47,6 @@
 (use-package org)
 (use-package posframe)
 (use-package protobuf-mode)
-(use-package phi-autopair)
 (use-package quelpa)
 (use-package sbt-mode)
 (use-package scala-mode)
@@ -123,7 +122,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(chatgpt-shell quelpa company yaml-mode use-package typescript-mode sr-speedbar sml-mode slime sbt-mode protobuf-mode lsp-ui lsp-metals google-c-style go-mode git full-ack flycheck fic-mode erlang emojify elm-mode d-mode company-lsp color-theme cider autopair arduino-mode ac-etags ac-emoji)))
+   '(geiser chatgpt-shell quelpa company yaml-mode use-package typescript-mode sr-speedbar sml-mode slime sbt-mode protobuf-mode lsp-ui lsp-metals google-c-style go-mode git full-ack flycheck fic-mode erlang emojify elm-mode d-mode color-theme cider arduino-mode ac-etags ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
