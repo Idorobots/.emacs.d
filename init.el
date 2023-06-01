@@ -28,7 +28,7 @@
 ;; Extra packages
 (require 'package)
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
@@ -51,8 +51,8 @@
 (use-package cider)
 (use-package clojure-mode)
 (use-package company)
-(use-package dap-mode)
 (use-package d-mode)
+(use-package dap-mode)
 (use-package elm-mode)
 (use-package emojify)
 (use-package erlang)
@@ -61,25 +61,26 @@
 (use-package full-ack)
 (use-package geiser)
 (use-package git)
+(use-package go-mode)
 (use-package google-c-style)
-(use-package lsp-mode)
 (use-package lsp-metals)
+(use-package lsp-mode)
 (use-package lsp-ui)
 (use-package markdown-mode)
 (use-package org)
 (use-package posframe)
 (use-package protobuf-mode)
 (use-package quelpa)
+(use-package racket-mode)
+(use-package sbt-mode)
 (use-package sbt-mode)
 (use-package scala-mode)
-(use-package sbt-mode)
 (use-package slime)
 (use-package sml-mode)
 (use-package sr-speedbar)
-(use-package typescript-mode)
 (use-package terraform-mode)
+(use-package typescript-mode)
 (use-package yaml-mode)
-(use-package go-mode)
 
 ;; QUELPA packages:
 (quelpa '(chatgpt-shell :repo Idorobots/chatgpt-shell :fetcher github))
@@ -125,7 +126,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
+   '(racket-mode yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

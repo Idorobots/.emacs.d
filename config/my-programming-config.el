@@ -66,6 +66,7 @@
 (add-hook 'emacs-lisp-mode-hook 'common-programming-settings)
 (add-hook 'lisp-mode-hook 'common-programming-settings)
 (add-hook 'scheme-mode-hook 'common-programming-settings)
+(add-hook 'racket-mode-hook 'common-programming-settings)
 (add-hook 'sml-mode-hook 'common-programming-settings)
 (add-hook 'latex-mode-hook 'common-programming-settings)
 (add-hook 'yaml-mode-hook 'common-programming-settings)
