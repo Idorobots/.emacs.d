@@ -43,6 +43,7 @@
 ;;       %D - Like %T, separated for convinience."
 
 ;;; TODO:
+;; - Move to mode-line-stats
 
 ;;; Code:
 

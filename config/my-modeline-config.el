@@ -4,13 +4,13 @@
 ;; STATS'N'SHIT
 ;;;;;;;;;;;;;;;;;;;;
 
-(require 'battery)
-(setq battery-status-function 'battery-linux-sysfs)
-(setq battery-mode-line-format "#%b %p %t")   ; NOTE Used by custom mode-line-format, do not change.
-(setq battery-load-critical 5)
-(setq battery-load-low 25)
-(setq battery-level-warning t)
-(display-battery-mode t)
+(require 'mls-battery)
+(setq mls-battery-battery-format "#%b %p %t") ; NOTE Used by custom mode-line-format, do not change.
+(setq mls-battery-format "")                  ; NOTE Since it's using battery mode line string directly we don't need this.
+(setq mls-battery-load-critical 5)
+(setq mls-battery-load-low 25)
+(setq mls-battery-level-warning t)
+(mls-battery-start)
 
 (require 'network-speed)                      ; NOTE Used by custom mode-line-format, do not change.
 (setq network-speed-update-interval 5)
@@ -22,15 +22,16 @@
 (setq network-speed-format-string "%NI#%RB#%TB#%RX#%TX#%AX")
 (network-speed-start)
 
-(require 'cpu-stats)
-(setq cpu-usage-update-interval 5)
-(setq cpu-usage-format "%A %C0 %C1")
-(cpu-usage-start)
+(require 'mls-cpu)
+(setq mls-cpu-update-interval 5)
+(setq mls-cpu-format "%A %C0 %C1")
+(mls-cpu-start)
 
-(require 'memory-stats)
-(setq memory-usage-update-interval 5)
-(setq memory-usage-format "%R %F %S")
-(memory-usage-start)
+(require 'mls-memory)
+(setq mls-memory-update-interval 5)
+(setq mls-memory-format "%r %f")
+(setq mls-memory-shell-command "free -m | tail -n2")
+(mls-memory-start)
 
 (defvar load-average-val (load-average))
 (defvar load-average-update-interval 10)
@@ -147,19 +148,19 @@
                     '(:eval (let* ((battery (split-string battery-mode-line-string))
                                    (battery-level (string-to-number (cadr battery))))
                               (unless (or (not battery) (string= (cadr battery) "N/A"))
-                                (if (>= battery-level battery-load-critical)
-                                    (when (not battery-level-warning)
-                                      (setq battery-level-warning t))
-                                  (when battery-level-warning
-                                    (setq battery-level-warning nil)
+                                (if (>= battery-level mls-battery-load-critical)
+                                    (when (not mls-battery-level-warning)
+                                      (setq mls-battery-level-warning t))
+                                  (when mls-battery-level-warning
+                                    (setq mls-battery-level-warning nil)
                                     (notify-send "Battery critically low!"
                                                  (format "Time remaining: %sh"
                                                          (caddr battery)))))
                                 (propertize (concat " " (cadr battery) "%%")
                                             ;; NOTE battery-status-function inconvinience workarround.
                                             'face (caddr (assoc (cond ((string= (car battery) "#+") "#+")
-                                                                      ((<= battery-level battery-load-critical) "#!")
-                                                                      ((<= battery-level battery-load-low) "#-")
+                                                                      ((<= battery-level mls-battery-load-critical) "#!")
+                                                                      ((<= battery-level mls-battery-load-low) "#-")
                                                                       (t (car battery)))
                                                                 my-battery-status-alist))
                                             'help-echo (format "Battery status: %s\nTime remaining: %sh"
@@ -169,7 +170,7 @@
                                             'mouse-face 'mode-line-highlight))))
 
                     ;; CPU usage.
-                    '(:eval (let* ((usage (split-string cpu-usage-mode-line-string))
+                    '(:eval (let* ((usage (split-string mls-cpu-mode-line-string))
                                    (usage-level (string-to-number (or (car usage) "0"))))
                               (propertize (format " %d%s" usage-level "%%")
                                           'face (cond ((>= usage-level 90.0) 'my-red-face)
@@ -179,10 +180,10 @@
                                           'help-echo (concat "Usage:\n"
                                                              "CPU0: " (cadr usage) "%\n"
                                                              "CPU1: " (caddr usage) "%\n"
-                                                             "Average: " (car usage) "%\n"))))
+                                                             "Average: " (car usage) "%"))))
 
                     ;; RAM usage.
-                    '(:eval (let* ((usage (split-string memory-usage-mode-line-string))
+                    '(:eval (let* ((usage (split-string mls-memory-mode-line-string))
                                    (free-mem (string-to-number (or (cadr usage) "0"))))
                               (propertize (concat " " (car usage) "%%")
                                           'face (cond ((<= free-mem 256) 'my-red-face)
@@ -191,9 +192,7 @@
                                           'mouse-face 'mode-line-highlight
                                           'help-echo (concat "Main memory:\n"
                                                              "Usage: " (car usage) "%\n"
-                                                             "Free: " (cadr usage) " MB\n"
-                                                             "Swap:\n"
-                                                             "Usage: " (caddr usage) "%\n"))))
+                                                             "Free: " (cadr usage) " MB"))))
 
                     ;; Current system load average.
                     '(:eval (let* ((load (mapcar (lambda (x) (/ x 100.0))
