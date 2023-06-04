@@ -6,6 +6,7 @@
 
 (require 'gamify)
 
+(setq gamify-notification-function 'notify-send)
 (setq gamify-skip-levels '("Dabbling" "Novice" "Adequate"))
 (setq gamify-update-interval 1)
 (setq gamify-rusty-time (* 60 60 24 30 3))
