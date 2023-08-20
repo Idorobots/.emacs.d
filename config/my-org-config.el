@@ -5,7 +5,6 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 (require 'org)
-(require 'org-install)
 
 ;; Org file autoload patterns:
 (add-to-list 'auto-mode-alist '("TODO$" . org-mode))

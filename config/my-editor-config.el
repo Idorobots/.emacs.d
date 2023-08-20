@@ -74,21 +74,7 @@ point reaches the beginning or end of the buffer, stop there."
       (indent-region (point-min) (point-max)))))
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
-(setq linum-mode-exclude-list                 ; Linum mode
-      '(eshell-mode
-        term-mode
-        erc-mode
-        org-mode
-        org-agenda-mode
-        ack-mode))
-
-(defadvice linum-on (around linum-on-inhibit-for-modes)
-  "Stop the load of linum-mode for some major modes."
-  (unless (member major-mode linum-mode-exclude-list)
-    ad-do-it))
-(ad-activate 'linum-on)
-
-(global-linum-mode t)
+(global-display-line-numbers-mode)
 
 (global-hl-line-mode t)                       ; Line highlighting.
 (show-paren-mode t)                           ; Show matching parentheses.
