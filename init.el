@@ -63,6 +63,7 @@
 (use-package git)
 (use-package go-mode)
 (use-package google-c-style)
+(use-package gnuplot)
 (use-package lsp-metals)
 (use-package lsp-mode)
 (use-package lsp-ui)
@@ -125,7 +126,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(mode-line-stats gamify racket-mode yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
+   '(gnuplot mode-line-stats gamify racket-mode yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
