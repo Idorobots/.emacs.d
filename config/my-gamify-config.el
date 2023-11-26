@@ -7,6 +7,8 @@
 (require 'gamify)
 
 (setq gamify-notification-function 'notify-send)
+(setq gamify-notification-xp-icon-path
+      (expand-file-name (concat my-stuff-dir "xp.png")))
 (setq gamify-skip-levels '("Dabbling" "Novice" "Adequate"))
 (setq gamify-update-interval 1)
 (setq gamify-rusty-time (* 60 60 24 30 3))
