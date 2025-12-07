@@ -30,6 +30,7 @@
 (global-unset-key (kbd "C-M-t"))
 (global-unset-key (kbd "C-x C-t"))
 (global-unset-key (kbd "C-x C-n"))
+(setq tab-width 4)
 
 ;; Add some nifty features:
 (require 'tramp)

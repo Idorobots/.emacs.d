@@ -32,7 +32,7 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
-            (setq tab-width 4)
+            (setq tab-width 8)
             (visual-line-mode t)
             ;; Pretty images in a buffer:
             (local-set-key (kbd "M-i") 'org-toggle-inline-images)
@@ -246,20 +246,22 @@
              org-capture-templates))
 
 (defun org-agenda-gamify-prefix ()
-  (let* ((gamify-exp (org-entry-get nil gamify-exp-property))
-         (gamify-achievement (org-entry-get nil gamify-achievement-property))
-         (exp-val (when gamify-exp
-                    (read gamify-exp))))
-    (concat (cond ((numberp exp-val)
-                   (number-to-string exp-val))
-                  ((null exp-val) "")
-                  ((listp exp-val)
-                   (let ((base (car exp-val))
-                         (delta (cadr exp-val)))
-                     (format "~%d"
-                             (+ (or base gamify-default-exp)
-                                (/ (or delta gamify-default-exp-delta) 2))))))
-            (if gamify-achievement "!" ""))))
+  (if (derived-mode-p 'org-mode)
+    (let* ((gamify-exp (org-entry-get nil gamify-exp-property))
+           (gamify-achievement (org-entry-get nil gamify-achievement-property))
+           (exp-val (when gamify-exp
+                      (read gamify-exp))))
+      (concat (cond ((numberp exp-val)
+                     (number-to-string exp-val))
+                    ((null exp-val) "")
+                    ((listp exp-val)
+                     (let ((base (car exp-val))
+                           (delta (cadr exp-val)))
+                       (format "~%d"
+                               (+ (or base gamify-default-exp)
+                                  (/ (or delta gamify-default-exp-delta) 2))))))
+              (if gamify-achievement "!" "")))
+    ""))
 
 (setf (cdr (assoc 'agenda org-agenda-prefix-format))
       (concat

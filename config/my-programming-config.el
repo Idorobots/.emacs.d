@@ -128,6 +128,7 @@
 
 ;; Flymake settings:
 (require 'flymake)
+(require 'flymake-proc)
 
 (set-face-attribute 'flymake-errline nil :background "Firebrick3")
 (set-face-attribute 'flymake-warnline nil :background "DarkOrange3")

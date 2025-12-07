@@ -110,7 +110,7 @@
 (require 'my-modeline-config)
 
 ;; My AI config:o
-(require 'my-ai-config)
+;(require 'my-ai-config)
 
 ;; Some nifty utils:
 (require 'misc-utils)
