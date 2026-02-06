@@ -84,7 +84,6 @@
 (use-package typescript-mode)
 (use-package yaml-mode)
 
-;(use-package whisper)
 (use-package acp)
 (use-package agent-shell
   :bind ("C-c a" . agent-shell))
@@ -93,6 +92,7 @@
   :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message))
 
 ;; QUELPA packages:
+(quelpa '(whisper :repo Idorobots/whisper.el :fetcher github))
 (quelpa '(chatgpt-shell :repo Idorobots/chatgpt-shell :fetcher github))
 (quelpa '(gamify :repo Idorobots/gamify-el :fetcher github))
 (quelpa '(mode-line-stats :repo Idorobots/mode-line-stats :fetcher github))
