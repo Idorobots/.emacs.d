@@ -28,7 +28,7 @@
 ;; Extra packages
 (require 'package)
 
-(add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
@@ -84,6 +84,10 @@
 (use-package typescript-mode)
 (use-package yaml-mode)
 
+;(use-package whisper)
+(use-package acp)
+(use-package agent-shell
+  :bind ("C-c a" . agent-shell))
 (use-package ellama
   :bind ("C-c e" . ellama)
   :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message))
@@ -92,7 +96,6 @@
 (quelpa '(chatgpt-shell :repo Idorobots/chatgpt-shell :fetcher github))
 (quelpa '(gamify :repo Idorobots/gamify-el :fetcher github))
 (quelpa '(mode-line-stats :repo Idorobots/mode-line-stats :fetcher github))
-
 
 ;; My Gamify config:
 (require 'my-gamify-config)
@@ -109,8 +112,8 @@
 ;; My modeline config:
 (require 'my-modeline-config)
 
-;; My AI config:o
-;(require 'my-ai-config)
+;; My AI config:
+(require 'my-ai-config)
 
 ;; Some nifty utils:
 (require 'misc-utils)
@@ -136,7 +139,13 @@
  ;; If there is more than one, they won't work right.
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
-   '(ellama gptel gnuplot mode-line-stats gamify racket-mode yaml-mode use-package typescript-mode terraform-mode sr-speedbar sml-mode slime sbt-mode quelpa protobuf-mode paredit lsp-ui lsp-metals google-c-style go-mode git geiser full-ack flycheck fic-mode erlang emojify elm-mode d-mode company cider chatgpt-shell arduino-mode ac-etags ac-emoji)))
+   '(ac-emoji ac-etags arduino-mode chatgpt-shell cider company d-mode
+              ellama elm-mode emojify erlang fic-mode flycheck
+              full-ack gamify geiser git gnuplot go-mode
+              google-c-style gptel lsp-metals lsp-ui mode-line-stats
+              paredit protobuf-mode quelpa racket-mode sbt-mode slime
+              sml-mode sr-speedbar terraform-mode typescript-mode
+              use-package whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
