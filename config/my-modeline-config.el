@@ -143,6 +143,9 @@
                     'minor-mode-alist
                     "%]]"
 
+                    ;; Agent Shell
+                    '(:eval (agent-shell--mode-line-format))
+
                     ;; Current battery status.
                     ;; NOTE Required some hacking - defining custom format-battery-string breaks transient- mark-mode.
                     '(:eval (let* ((battery (split-string battery-mode-line-string))

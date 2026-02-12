@@ -31,8 +31,29 @@
 (setq agent-shell-preferred-agent-config
       (agent-shell-opencode-make-agent-config))
 
-;(setq agent-shell-opencode-command '("opencode" "acp" "--model" "anthropic/claude-opus-4-5" "--agent" "plan"))
 (setq agent-shell-opencode-command '("opencode" "acp"))
+(setq agent-shell-container-command-runner '("devcontainer" "exec" "--workspace-folder" "."))
+;(setq agent-shell-container-command-runner 'nil)
+(setq agent-shell-show-context-usage-indicator 't)
+(setq agent-shell-show-usage-at-turn-end 't)
+(setq agent-shell-header-style 'text)
+(setq agent-shell-path-resolver-function #'agent-shell--resolve-devcontainer-path)
+(setq agent-shell-text-file-capabilities nil)
+
+(require 'agent-shell-usage)
+
+(defun agent-shell--context-usage-indicator ()
+  "Custom version of the indicator."
+  (when-let* ((agent-shell-show-context-usage-indicator)
+              ((agent-shell--usage-has-data-p (map-elt (agent-shell--state) :usage)))
+              (usage (map-elt (agent-shell--state) :usage))
+              (context-used (map-elt usage :context-used))
+              (context-size (map-elt usage :context-size))
+              ((> context-size 0)))
+    (let* ((percentage (/ (* 100.0 context-used) context-size)))
+      (when percentage
+        (propertize (format "%.1f%%" percentage)
+                    'help-echo (agent-shell--format-usage usage))))))
 
 (require 'whisper)
 (setq whisper-install-directory "/home/k/projects/software/")
@@ -41,5 +62,7 @@
 (setq whisper-use-threads (/ (num-processors) 2))
 (setq whisper-server-mode 'local)
 (setq whisper-return-cursor-to-start nil)
+
+(global-set-key (kbd "C-c w") 'whisper-run)
 
 (provide 'my-ai-config)

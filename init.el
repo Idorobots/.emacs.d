@@ -85,10 +85,8 @@
 (use-package yaml-mode)
 
 (use-package acp)
-(use-package agent-shell
-  :bind ("C-c a" . agent-shell))
+(use-package agent-shell)
 (use-package ellama
-  :bind ("C-c e" . ellama)
   :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message))
 
 ;; QUELPA packages:
@@ -139,9 +137,9 @@
  ;; If there is more than one, they won't work right.
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
-   '(ac-emoji ac-etags arduino-mode chatgpt-shell cider company d-mode
-              ellama elm-mode emojify erlang fic-mode flycheck
-              full-ack gamify geiser git gnuplot go-mode
+   '(ac-emoji ac-etags agent-shell arduino-mode chatgpt-shell cider
+              company d-mode ellama elm-mode emojify erlang fic-mode
+              flycheck full-ack gamify geiser git gnuplot go-mode
               google-c-style gptel lsp-metals lsp-ui mode-line-stats
               paredit protobuf-mode quelpa racket-mode sbt-mode slime
               sml-mode sr-speedbar terraform-mode typescript-mode
