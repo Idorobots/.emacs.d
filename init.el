@@ -70,6 +70,7 @@
 (use-package lsp-ui)
 (use-package markdown-mode)
 (use-package org)
+(use-package ox-gfm)
 (use-package posframe)
 (use-package protobuf-mode)
 (use-package quelpa)
@@ -137,13 +138,13 @@
  ;; If there is more than one, they won't work right.
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
-   '(ac-emoji ac-etags agent-shell arduino-mode chatgpt-shell cider
+   '(ac-emoji ac-etags acp agent-shell arduino-mode chatgpt-shell cider
               company d-mode ellama elm-mode emojify erlang fic-mode
               flycheck full-ack gamify geiser git gnuplot go-mode
               google-c-style gptel lsp-metals lsp-ui mode-line-stats
-              paredit protobuf-mode quelpa racket-mode sbt-mode slime
-              sml-mode sr-speedbar terraform-mode typescript-mode
-              use-package whisper yaml-mode)))
+              ox-gfm paredit protobuf-mode quelpa racket-mode sbt-mode
+              slime sml-mode sr-speedbar terraform-mode
+              typescript-mode use-package whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

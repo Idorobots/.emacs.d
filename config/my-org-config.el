@@ -5,6 +5,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 (require 'org)
+(require 'org-tempo)
 
 ;; Org file autoload patterns:
 (add-to-list 'auto-mode-alist '("TODO$" . org-mode))
@@ -64,6 +65,12 @@
 (deftoggler my-toggle-suspend "SUSPENDED")
 
 (add-hook 'org-trigger-hook 'my-toggle-suspend)
+
+;; Make backticks look better:
+(font-lock-add-keywords
+ 'org-mode
+ '(("`\\([^`\n]+\\)`"
+    (1 'org-code prepend))))
 
 ;; Links and hyperrefs:
 (setq org-return-follows-link t)
@@ -419,6 +426,31 @@
    (matlab . t)
    (ruby . t)
    (scheme . t)))
+
+;; Markdown export
+(require 'ox-gfm)
+
+(defun org-copy-region-as-markdown (beg end)
+  "Convert Org region to Markdown and copy to kill ring."
+  (interactive "r")
+  (let ((md (org-export-string-as
+             (buffer-substring-no-properties beg end)
+             'gfm t '(:with-toc nil))))
+    (kill-new md)
+    (message "Copied as Markdown!")))
+
+(defun org-copy-subtree-as-markdown ()
+  (interactive)
+  (org-mark-subtree)
+  (let ((text (buffer-substring-no-properties
+               (region-beginning)
+               (region-end))))
+    (kill-new (org-export-string-as text 'gfm t '(:with-toc nil)))
+    (deactivate-mark)
+    (message "Subtree copied as GitHub Markdown!")))
+
+(define-key org-mode-map (kbd "C-c M-w")
+  #'org-copy-region-as-markdown)
 
 ;; Random entry selection
 
