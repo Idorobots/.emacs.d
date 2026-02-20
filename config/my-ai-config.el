@@ -52,7 +52,7 @@
               ((> context-size 0)))
     (let* ((percentage (/ (* 100.0 context-used) context-size)))
       (when percentage
-        (propertize (format "%.1f%%" percentage)
+        (propertize (format "%.1f%% " percentage)
                     'help-echo (agent-shell--format-usage usage))))))
 
 (require 'whisper)
