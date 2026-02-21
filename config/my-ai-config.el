@@ -31,7 +31,7 @@
 (setq agent-shell-preferred-agent-config
       (agent-shell-opencode-make-agent-config))
 
-(setq agent-shell-opencode-command '("opencode" "acp"))
+(setq agent-shell-opencode-acp-command '("opencode" "acp"))
 (setq agent-shell-container-command-runner '("devcontainer" "exec" "--workspace-folder" "."))
 ;(setq agent-shell-container-command-runner 'nil)
 (setq agent-shell-show-context-usage-indicator 't)
@@ -39,6 +39,8 @@
 (setq agent-shell-header-style 'text)
 (setq agent-shell-path-resolver-function #'agent-shell--resolve-devcontainer-path)
 (setq agent-shell-text-file-capabilities nil)
+(setq agent-shell-thought-process-expand-by-default 't)
+(setq agent-shell-session-strategy 'new-deferred)
 
 (require 'agent-shell-usage)
 

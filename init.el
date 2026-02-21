@@ -143,7 +143,7 @@
               flycheck full-ack gamify geiser git gnuplot go-mode
               google-c-style gptel lsp-metals lsp-ui mode-line-stats
               ox-gfm paredit protobuf-mode quelpa racket-mode sbt-mode
-              slime sml-mode sr-speedbar terraform-mode
+              shell-maker slime sml-mode sr-speedbar terraform-mode
               typescript-mode use-package whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
