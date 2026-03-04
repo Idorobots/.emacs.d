@@ -40,7 +40,10 @@
 (setq agent-shell-path-resolver-function #'agent-shell--resolve-devcontainer-path)
 (setq agent-shell-text-file-capabilities nil)
 (setq agent-shell-thought-process-expand-by-default 't)
-(setq agent-shell-session-strategy 'new-deferred)
+(setq agent-shell-session-strategy 'new)
+
+;; FIXME This fixes the broken image yank via xclip. To be fixed properly in the future.
+(setq agent-shell-clipboard-image-handlers '())
 
 (require 'agent-shell-usage)
 
