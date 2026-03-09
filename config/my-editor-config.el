@@ -134,6 +134,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Session saving and restoring:
 (require 'desktop)
+(desktop-save-mode 1)
 (add-to-list 'desktop-modes-not-to-save 'erc)
 
 ;; Appointment tracking:
