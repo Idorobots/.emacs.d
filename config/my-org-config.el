@@ -142,7 +142,68 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-M-r") 'org-capture)
 
-                                        ; Additional Agenda commands:
+(require 'org-project-capture)
+(setq org-project-capture-default-backend (make-instance 'org-project-capture-project-backend))
+(defun org-project-capture-per-project-filename-fun (project-path)
+  (cond ((file-exists-p (concat project-path "VIBES.org")) "VIBES.org")
+        ((file-exists-p (concat project-path "ROADMAP.org")) "ROADMAP.org")
+        ('t "TODO.org")))
+(setq org-project-capture-per-project-filepath #'org-project-capture-per-project-filename-fun)
+
+(org-project-capture-per-project)
+
+(add-to-list 'org-capture-templates (org-project-capture-project-todo-entry
+                                     :capture-character "p"
+                                     :capture-heading "New Project Task"
+                                     :capture-template "* TODO %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n"))
+
+(require 'diff-mode)
+
+(defun get-prev-hunk-details ()
+  (when (derived-mode-p 'diff-mode)
+    (save-excursion
+      (when (ignore-errors (diff-hunk-prev) t)
+        (let* ((hunk-header
+                (buffer-substring-no-properties
+                 (line-beginning-position)
+                 (line-end-position)))
+               ;; Extract id
+               (hunk-id
+                (save-excursion
+                  (when (looking-at diff-hunk-header-re)
+                    (when (re-search-forward "^@@[^@]+@@ \\(.+\\)$" (line-end-position) t)
+                      (match-string-no-properties 1)))))
+               ;; Extract line number
+               (line-number
+                (save-excursion
+                  (when (looking-at diff-hunk-header-re)
+                    (match-string-no-properties 3))))
+               ;; Extract filename
+               (section-start
+                (save-excursion
+                  (when (re-search-backward "^diff --git " nil t)
+                    (point))))
+               (filename
+                (when (re-search-backward "^\\+\\+\\+ [ab]/\\(.+\\)$" section-start t)
+                  (match-string-no-properties 1))))
+          (format "In file %s at line %s, within the body of ~%s~" filename line-number hunk-id))))))
+
+(defun org-capture-prev-hunk-details ()
+  (when (org-capture-get :original-buffer)
+    (save-current-buffer
+      (with-current-buffer (org-capture-get :original-buffer)
+        (get-prev-hunk-details)))))
+
+(add-to-list 'org-capture-templates (org-project-capture-project-todo-entry
+                                     :capture-character "c"
+                                     :capture-heading "Code Review Comment"
+                                     :capture-template (concat "* TODO Code review comment\n"
+                                                               ":PROPERTIES:\n:context: %l\n:END:\n\n"
+                                                               "%(or (org-capture-prev-hunk-details) \"Filename: %F\")\n\n"
+                                                               "#+begin_example\n%i\n#+end_example\n\n"
+                                                               "%?")))
+
+;; Additional Agenda commands:
 (setq org-agenda-custom-commands
       '(("S" "Suspended tasks." todo "SUSPENDED")))
 
