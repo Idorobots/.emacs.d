@@ -160,33 +160,60 @@
 (require 'diff-mode)
 
 (defun get-prev-hunk-details ()
-  (when (derived-mode-p 'diff-mode)
-    (save-excursion
-      (when (ignore-errors (diff-hunk-prev) t)
-        (let* ((hunk-header
-                (buffer-substring-no-properties
-                 (line-beginning-position)
-                 (line-end-position)))
-               ;; Extract id
-               (hunk-id
-                (save-excursion
-                  (when (looking-at diff-hunk-header-re)
-                    (when (re-search-forward "^@@[^@]+@@ \\(.+\\)$" (line-end-position) t)
-                      (match-string-no-properties 1)))))
-               ;; Extract line number
-               (line-number
-                (save-excursion
-                  (when (looking-at diff-hunk-header-re)
-                    (match-string-no-properties 3))))
-               ;; Extract filename
-               (section-start
-                (save-excursion
-                  (when (re-search-backward "^diff --git " nil t)
-                    (point))))
-               (filename
-                (when (re-search-backward "^\\+\\+\\+ [ab]/\\(.+\\)$" section-start t)
-                  (match-string-no-properties 1))))
-          (format "In file %s at line %s, within the body of ~%s~" filename line-number hunk-id))))))
+  (save-excursion
+    (cond ((derived-mode-p 'diff-mode)
+           (when (ignore-errors (diff-hunk-prev) t)
+             (let* ((hunk-header
+                     (buffer-substring-no-properties
+                      (line-beginning-position)
+                      (line-end-position)))
+                    ;; Extract id
+                    (hunk-id
+                     (save-excursion
+                       ;; (when (looking-at diff-hunk-header-re)
+                       ;;   (when (re-search-forward "^@@[^@]+@@ \\(.+\\)$" (line-end-position) t)
+                       ;;     (match-string-no-properties 1)))
+                       (diff-current-defun)))
+                    ;; Extract line number
+                    (line-number
+                     (save-excursion
+                       (when (looking-at diff-hunk-header-re)
+                         (match-string-no-properties 3))))
+                    ;; Extract filename
+                    (section-start
+                     (save-excursion
+                       (when (re-search-backward "^diff --git " nil t)
+                         (point))))
+                    (filename
+                     (when (re-search-backward "^\\+\\+\\+ [ab]/\\(.+\\)$" section-start t)
+                       (match-string-no-properties 1))))
+               (format "In file %s around line %s, near the ~%s~" filename line-number hunk-id))))
+          ((derived-mode-p 'magit-mode)
+           (when (ignore-errors (diff-hunk-prev) t)
+             (let* ((hunk-header
+                     (buffer-substring-no-properties
+                      (line-beginning-position)
+                      (line-end-position)))
+                    ;; Extract id
+                    (hunk-id
+                     (save-excursion
+                       (when (looking-at diff-hunk-header-re)
+                         (when (re-search-forward "^@@[^@]+@@\s?\\(.+\\)$" (line-end-position) t)
+                           (match-string-no-properties 1)))))
+                    ;; Extract line number
+                    (line-number
+                     (save-excursion
+                       (when (looking-at diff-hunk-header-re)
+                         (match-string-no-properties 3))))
+                    ;; Extract filename
+                    (section-start
+                     (save-excursion
+                       (when (re-search-backward "^modified " nil t)
+                         (point))))
+                    (filename
+                     (when (re-search-backward "^modified\s+\\(.+\\)$" section-start t)
+                       (match-string-no-properties 1))))
+               (format "In file %s around line %s, near the ~%s~" filename line-number hunk-id)))))))
 
 (defun org-capture-prev-hunk-details ()
   (when (org-capture-get :original-buffer)

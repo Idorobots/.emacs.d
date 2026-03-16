@@ -61,6 +61,7 @@
 (use-package full-ack)
 (use-package geiser)
 (use-package git)
+(use-package magit)
 (use-package go-mode)
 (use-package google-c-style)
 (use-package gnuplot)
@@ -142,11 +143,11 @@
    '(ac-emoji ac-etags acp agent-shell arduino-mode chatgpt-shell cider
               company d-mode ellama elm-mode emojify erlang fic-mode
               flycheck full-ack gamify geiser git gnuplot go-mode
-              google-c-style gptel lsp-metals lsp-ui mode-line-stats
-              org-project-capture ox-gfm paredit protobuf-mode quelpa
-              racket-mode sbt-mode shell-maker slime sml-mode
-              sr-speedbar terraform-mode typescript-mode use-package
-              whisper yaml-mode)))
+              google-c-style gptel lsp-metals lsp-ui magit
+              mode-line-stats org-project-capture ox-gfm paredit
+              protobuf-mode quelpa racket-mode sbt-mode shell-maker
+              slime sml-mode sr-speedbar terraform-mode
+              typescript-mode use-package whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -48,6 +48,18 @@
 (require 'git)
 (setq vc-display-status t)
 
+(require 'magit)
+(setq magit-diff-refine-hunk t)
+
+(defun magit-diff-fontify-with-diff-mode ()
+  (save-excursion
+    (setq-local buffer-read-only nil)
+    (goto-char (point-min))
+    (setq-local diff-font-lock-syntax 'hunk-also)
+    (diff--font-lock-syntax (point-max))))
+
+(add-hook 'magit-diff-wash-diffs-hook #'magit-diff-fontify-with-diff-mode)
+
 (require 'google-c-style)
 
 ;; LSP support:
