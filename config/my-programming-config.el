@@ -53,10 +53,14 @@
 
 (defun magit-diff-fontify-with-diff-mode ()
   (save-excursion
-    (setq-local buffer-read-only nil)
-    (goto-char (point-min))
-    (setq-local diff-font-lock-syntax 'hunk-also)
-    (diff--font-lock-syntax (point-max))))
+    (let ((min (point-min))
+          (max (point-max)))
+      (save-restriction
+        (widen)
+        (setq-local buffer-read-only nil)
+        (setq-local diff-font-lock-syntax 'hunk-also)
+        (goto-char min)
+        (diff--font-lock-syntax max)))))
 
 (add-hook 'magit-diff-wash-diffs-hook #'magit-diff-fontify-with-diff-mode)
 
