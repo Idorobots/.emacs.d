@@ -158,6 +158,7 @@
                                      :capture-template "* TODO %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n"))
 
 (require 'diff-mode)
+(require 'magit)
 
 (defun diff-get-previous-hunk-details ()
   (save-excursion
