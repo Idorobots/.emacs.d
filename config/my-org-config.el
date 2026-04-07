@@ -212,10 +212,10 @@
              ;; Extract filename
              (section-start
               (save-excursion
-                (when (re-search-backward "^\\(?:modified\\|new file\\)" nil t)
+                (when (re-search-backward "^\\(?:modified\\|new file\\|deleted\\)" nil t)
                   (point))))
              (filename
-              (when (re-search-backward "^\\(?:modified\\|new file\\)\s+\\(.+\\)$" section-start t)
+              (when (re-search-backward "^\\(?:modified\\|new file\\|deleted\\)\s+\\(.+\\)$" section-start t)
                 (match-string-no-properties 1))))
         (list filename line-number hunk-id section-start)))))
 

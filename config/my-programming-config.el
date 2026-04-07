@@ -50,6 +50,8 @@
 
 (require 'magit)
 (setq magit-diff-refine-hunk t)
+(with-eval-after-load 'magit-mode
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 
 (defun magit-diff-fontify-with-diff-mode ()
   (save-excursion
@@ -63,6 +65,12 @@
         (diff--font-lock-syntax max)))))
 
 (add-hook 'magit-diff-wash-diffs-hook #'magit-diff-fontify-with-diff-mode)
+
+(defun toggle-magit-diff-fontification ()
+  (interactive)
+  (if (eq magit-diff-wash-diffs-hook nil)
+      (add-hook 'magit-diff-wash-diffs-hook #'magit-diff-fontify-with-diff-mode)
+    (setq magit-diff-wash-diffs-hook nil)))
 
 (require 'google-c-style)
 
