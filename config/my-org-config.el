@@ -128,8 +128,10 @@
 
 ;; Org capture:
 (setq org-capture-templates
-      '(("t" "New TODO item." entry (file "")
+      '(("t" "New scheduled TODO item." entry (file "")
          "* TODO %?\n  SCHEDULED: %t\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
+        ("d" "New deadline TODO item." entry (file "")
+         "* TODO %?\n  DEADLINE: %t\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
         ("n" "New note to self." entry (file+olp "~/org/doodles.org" "Notes")
          "* %?\n:PROPERTIES:\n:capture_time: %U\n:context: %a\n:END:\n")
         ("b" "Stuff to blog about." entry (file+olp "~/org/blog.org" "POSTS IDEAS" "Other")
