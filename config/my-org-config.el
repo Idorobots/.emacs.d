@@ -267,7 +267,8 @@
       '(("S" "Suspended tasks." todo "SUSPENDED")))
 
 ;; Use appt for agenda notifications:
-(add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+(add-hook 'org-agenda-finalize-hook (lambda ()
+                                      (org-agenda-to-appt)))
 
 (require 'appt)
 

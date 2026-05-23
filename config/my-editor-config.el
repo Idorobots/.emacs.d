@@ -147,7 +147,8 @@ point reaches the beginning or end of the buffer, stop there."
 (defun my-appt-popup (min-to-app new-time msg)
   (notify-send (if (string= "0" min-to-app)
                    "A taks starts now."
-                 (format "A task starts in %s minutes." min-to-app)) msg))
+                 (format "A task starts in %s minutes." min-to-app))
+               msg))
 
 (setq appt-disp-window-function (function my-appt-popup))
 (appt-activate t)                             ; NOTE Requires (display-time)
