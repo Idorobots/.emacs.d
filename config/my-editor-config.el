@@ -77,7 +77,11 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-display-line-numbers-mode)
 
-(global-hl-line-mode t)                       ; Line highlighting.
+;; Line highlighting.
+;; (global-hl-line-mode t)
+(add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'text-mode-hook #'hl-line-mode)
+
 (show-paren-mode t)                           ; Show matching parentheses.
 (global-set-key [f5] 'call-last-kbd-macro)    ; Quite useful.
 
@@ -152,5 +156,15 @@ point reaches the beginning or end of the buffer, stop there."
 
 (setq appt-disp-window-function (function my-appt-popup))
 (appt-activate t)                             ; NOTE Requires (display-time)
+
+;; Terminal emulation
+(require 'vterm)
+
+(defun sane-terminal-settings ()
+  (define-key vterm-mode-map (kbd "C-q") #'vterm-send-next-key)
+  (display-line-numbers-mode -1))
+
+(add-hook 'vterm-mode-hook 'sane-terminal-settings)
+(add-hook 'term-mode-hook 'sane-terminal-settings)
 
 (provide 'my-editor-config)
