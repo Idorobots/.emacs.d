@@ -4,22 +4,6 @@
 ;; AI
 ;;;;;;;;;;;;;;;;;;;;
 
-(require 'gptel)
-
-(setq gptel-api-key (lambda ()
-                     (require 'secrets secrets-file)
-                     openai-api-key))
-
-(require 'llm-openai)
-(require 'ellama)
-
-(setq ellama-auto-scroll 't)
-(setq ellama-provider (make-llm-openai
-                       :key
-                       (lambda ()
-                         (require 'secrets secrets-file)
-                         openai-api-key)))
-
 (require 'agent-shell)
 
 (setq agent-shell-opencode-authentication

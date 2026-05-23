@@ -65,7 +65,6 @@
 (use-package go-mode)
 (use-package google-c-style)
 (use-package gnuplot)
-(use-package gptel)
 (use-package lsp-metals)
 (use-package lsp-mode)
 (use-package lsp-ui)
@@ -85,16 +84,14 @@
 (use-package sr-speedbar)
 (use-package terraform-mode)
 (use-package typescript-mode)
+(use-package vterm)
 (use-package yaml-mode)
 
 (use-package acp)
 (use-package agent-shell)
-(use-package ellama
-  :hook (org-ctrl-c-ctrl-c-final . ellama-chat-send-last-message))
 
 ;; QUELPA packages:
 (quelpa '(whisper :repo Idorobots/whisper.el :fetcher github))
-(quelpa '(chatgpt-shell :repo Idorobots/chatgpt-shell :fetcher github))
 (quelpa '(gamify :repo Idorobots/gamify-el :fetcher github))
 (quelpa '(mode-line-stats :repo Idorobots/mode-line-stats :fetcher github))
 
@@ -140,14 +137,14 @@
  ;; If there is more than one, they won't work right.
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
-   '(ac-emoji ac-etags acp agent-shell arduino-mode chatgpt-shell cider
-              company d-mode ellama elm-mode emojify erlang fic-mode
-              flycheck full-ack gamify geiser git gnuplot go-mode
-              google-c-style gptel lsp-metals lsp-ui magit
-              mode-line-stats org-project-capture ox-gfm paredit
-              protobuf-mode quelpa racket-mode sbt-mode shell-maker
-              slime sml-mode sr-speedbar terraform-mode
-              typescript-mode use-package whisper yaml-mode)))
+   '(ac-emoji ac-etags acp agent-shell arduino-mode cider company d-mode
+              elm-mode emojify erlang fic-mode flycheck full-ack
+              gamify geiser git gnuplot go-mode google-c-style
+              lsp-metals lsp-ui magit mode-line-stats
+              org-project-capture ox-gfm paredit protobuf-mode quelpa
+              racket-mode sbt-mode shell-maker slime sml-mode
+              sr-speedbar terraform-mode typescript-mode use-package
+              vterm whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
