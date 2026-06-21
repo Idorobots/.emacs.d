@@ -81,6 +81,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; (global-hl-line-mode t)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'text-mode-hook #'hl-line-mode)
+(add-hook 'org-agenda-mode-hook #'hl-line-mode)
 
 (show-paren-mode t)                           ; Show matching parentheses.
 (global-set-key [f5] 'call-last-kbd-macro)    ; Quite useful.
