@@ -76,6 +76,7 @@
 (use-package protobuf-mode)
 (use-package quelpa)
 (use-package racket-mode)
+(use-package rust-mode)
 (use-package sbt-mode)
 (use-package sbt-mode)
 (use-package scala-mode)
@@ -137,14 +138,13 @@
  ;; If there is more than one, they won't work right.
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
-   '(ac-emoji ac-etags acp agent-shell arduino-mode cider company d-mode
-              elm-mode emojify erlang fic-mode flycheck full-ack
-              gamify geiser git gnuplot go-mode google-c-style
-              lsp-metals lsp-ui magit mode-line-stats
-              org-project-capture ox-gfm paredit protobuf-mode quelpa
-              racket-mode sbt-mode shell-maker slime sml-mode
-              sr-speedbar terraform-mode typescript-mode use-package
-              vterm whisper yaml-mode)))
+   '(ac-emoji ac-etags agent-shell arduino-mode cider company d-mode
+	      elm-mode emojify erlang fic-mode flycheck full-ack
+	      gamify geiser git gnuplot go-mode google-c-style
+	      lsp-metals lsp-ui mode-line-stats ox-gfm paredit
+	      protobuf-mode quelpa racket-mode rust-mode sbt-mode
+	      scad-mode slime sml-mode sr-speedbar terraform-mode
+	      typescript-mode use-package vterm whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

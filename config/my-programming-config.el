@@ -138,6 +138,9 @@
 (add-hook 'erlang-mode-hook (lambda ()
                               (common-programming-settings)
                               (lsp)))
+(add-hook 'rust-mode-hook (lambda ()
+                            (common-programming-settings)
+                            (lsp)))
 
 ;; Autoload patterns:
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . typescript-mode))
