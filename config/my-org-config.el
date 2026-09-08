@@ -546,7 +546,8 @@
    (latex . t)
    (matlab . t)
    (ruby . t)
-   (scheme . t)))
+   (scheme . t)
+   (mermaid . t)))
 
 ;; Markdown export
 (require 'ox-gfm)
@@ -572,6 +573,11 @@
 
 (define-key org-mode-map (kbd "C-c M-w")
   #'org-copy-region-as-markdown)
+
+;; Mermaid support
+(require 'ob-mermaid)
+(setq ob-mermaid-cli-path "mmdc")
+(setq ob-mermaid-default-config-file (concat my-themes-dir "mermaid.json"))
 
 ;; Random entry selection
 

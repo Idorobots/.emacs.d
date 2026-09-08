@@ -69,6 +69,8 @@
 (use-package lsp-mode)
 (use-package lsp-ui)
 (use-package markdown-mode)
+(use-package mermaid-mode)
+(use-package ob-mermaid)
 (use-package org)
 (use-package org-project-capture)
 (use-package ox-gfm)
@@ -139,12 +141,13 @@
  '(chatgpt-shell-request-timeout 360)
  '(package-selected-packages
    '(ac-emoji ac-etags agent-shell arduino-mode cider company d-mode
-	      elm-mode emojify erlang fic-mode flycheck full-ack
-	      gamify geiser git gnuplot go-mode google-c-style
-	      lsp-metals lsp-ui mode-line-stats ox-gfm paredit
-	      protobuf-mode quelpa racket-mode rust-mode sbt-mode
-	      scad-mode slime sml-mode sr-speedbar terraform-mode
-	      typescript-mode use-package vterm whisper yaml-mode)))
+              elm-mode emojify erlang fic-mode flycheck full-ack
+              gamify geiser git gnuplot go-mode google-c-style
+              lsp-metals lsp-ui mermaid-mode mode-line-stats
+              ob-mermaid ox-gfm paredit protobuf-mode quelpa
+              racket-mode rust-mode sbt-mode scad-mode slime sml-mode
+              sr-speedbar terraform-mode typescript-mode use-package
+              vterm whisper yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
