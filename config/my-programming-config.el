@@ -29,6 +29,9 @@
 ;; SML mode is needy:
 (setq exec-path (cons "/opt/bin/SML/bin" exec-path))
 
+;; Auto-completion mode
+(global-completion-preview-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TOOLS
 ;;;;;;;;;;;;;;;;;;;;
