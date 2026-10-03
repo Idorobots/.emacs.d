@@ -25,6 +25,7 @@
 (setq agent-shell-text-file-capabilities nil)
 (setq agent-shell-thought-process-expand-by-default 't)
 (setq agent-shell-session-strategy 'new)
+(setq agent-shell-persistent-prompt-enabled 't)
 
 (require 'whisper)
 (setq whisper-install-directory "/home/k/projects/software/")
